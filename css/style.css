@@ -146,7 +146,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #010302 url("images/yuki.png") repeat top center;
+  background: #010302 url("images/yuki.png") no-repeat top center;
   background-attachment: fixed;
   -webkit-background-size: contain;
   -moz-background-size: contain;

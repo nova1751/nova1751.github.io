@@ -146,11 +146,8 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #010302 url("images/yuki.png") no-repeat top center;
+  background: #010302 url("images/banner-dark.jpg") no-repeat top center;
   background-attachment: fixed;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  background-size: contain;
   font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: #555;
   width: 100%;

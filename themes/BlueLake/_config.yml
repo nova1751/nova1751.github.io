@@ -103,7 +103,7 @@ about:
   - label: github
     url: https://github.com/nova1751
     title: Github
-  - label: weibo
+  - label: bilibili
     url: https://space.bilibili.com/325854600?spm_id_from=333.1007.0.0
     title: Bilibili
 
@@ -156,7 +156,7 @@ comment:
 # Friend Links widget. Empty links will hide widget.
 links:
   - title: 资源小站
-    url: https://nova1751.herokuapp.com/
+    url: https://yuki.refrain.ga/
   - title: Bilibili
     url: https://space.bilibili.com/325854600?spm_id_from=333.1007.0.0
   - title: Github

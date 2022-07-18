@@ -442,6 +442,9 @@ body {
 .fa-toc:before {
   content: "\e016";
 }
+.fa-bilibili:before {
+  content: "\e00f";
+}
 #header {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

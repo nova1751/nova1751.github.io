@@ -282,6 +282,7 @@
       </div>
     </div>
 
+
     <!-- 引用Aplayer和metingjs -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
@@ -293,21 +294,6 @@
     <div id="my-aplayer" class="aplayer" data-id="7416755747" data-server="netease" data-type="playlist"
       data-fixed="true" // 吸底模式可以固定播放器于页面底部 data-autoplay="false" data-order="list" data-volume="0.55"
       data-theme="#cc543a" data-preload="auto"></div>
-
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-
-    <script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
-
-    <script>
-
-      // 对所有链接跳转事件绑定pjax容器container
-
-      $(document).pjax('a[target!=_blank]', '#container', { fragment: '#container', timeout: 8000 })
-      $(document).on('pjax:complete', function () {
-
-        // 需要做的操作
-      })
-    </script>
 
 
 

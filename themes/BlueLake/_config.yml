@@ -31,6 +31,8 @@ Plugins:
   hexo-generator-feed
   hexo-generator-sitemap
 
+#Feed Atom
+
 # Sitemap
 sitemap:
   path: sitemap.xml
@@ -59,7 +61,7 @@ widgets:
 
 # Widget behavior
 archive_type: 'yearly' # 'yearly','monthly'
-archive_format: 'YYYY年' # 'YYYY年','YYYY年MM月'
+archive_format: 'YYYY年MM月' # 'YYYY年','YYYY年MM月'
 show_count: true
 recent_posts_limits: 5
 
@@ -81,7 +83,7 @@ gauges_analytics:
 
 # MathJax support
 mathjax:
-  enable: false  # true/false.
+  enable: true  # true/false.
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 
 # Reward
@@ -161,3 +163,4 @@ links:
     url: https://space.bilibili.com/325854600?spm_id_from=333.1007.0.0
   - title: Github
     url: https://github.com/nova1751
+

@@ -124,3 +124,27 @@ live2d:
     show: true
   react:
     opacity: 0.7
+  
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: false

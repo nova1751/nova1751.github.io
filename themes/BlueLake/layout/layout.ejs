@@ -1,27 +1,61 @@
 <!DOCTYPE html>
 <html>
 <%- partial('_partial/head') %>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
-      <div class="outer">
-        <section id="main"><%- body %></section>
-        <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
-          <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
-        <% } %>
-      </div>
-      <a id="totop" href="#top"></a>
-      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-    </div>
-  </div>
-  <%- partial('_partial/after-footer') %>
-  <!-- 页面点击小红心 -->
-<script type="text/javascript" src="/js/love.js"></script>
-<!--浏览器搞笑标题-->
-<script type="text/javascript" src="/js/FunnyTitle.js"></script>
-<!-- 雪花特效 -->
-<script type="text/javascript" src="\js\snow.js"></script>
 
-</body>
+  <body>
+    <div id="container">
+      <div id="wrap">
+        <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+          <div class="outer">
+            <section id="main">
+              <%- body %>
+            </section>
+            <% if (theme.sidebar && theme.sidebar !=='bottom' ){ %>
+              <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
+                <% } %>
+          </div>
+          <a id="totop" href="#top"></a>
+          <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+      </div>
+    </div>
+
+    <!-- 引用Aplayer和metingjs -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+
+    <div id="my-aplayer" class="aplayer" data-id="7416755747" data-server="netease" data-type="playlist"
+      data-fixed="true" // 吸底模式可以固定播放器于页面底部 data-autoplay="false" data-order="list" data-volume="0.55"
+      data-theme="#cc543a" data-preload="auto"></div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+    <script>
+
+      // 对所有链接跳转事件绑定pjax容器container
+
+      $(document).pjax('a[target!=_blank]', '#container', { fragment: '#container', timeout: 8000 })
+      $(document).on('pjax:complete', function () {
+
+        // 需要做的操作
+      })
+    </script>
+
+
+
+    <%- partial('_partial/after-footer') %>
+      <!-- 页面点击小红心 -->
+      <script type="text/javascript" src="/js/love.js"></script>
+      <!--浏览器搞笑标题-->
+      <script type="text/javascript" src="/js/FunnyTitle.js"></script>
+      <!-- 雪花特效 -->
+      <script type="text/javascript" src="\js\snow.js"></script>
+
+  </body>
+
 </html>

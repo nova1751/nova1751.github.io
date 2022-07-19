@@ -6,14 +6,14 @@
 title: 希亚的西红柿的博客小站
 subtitle: ''
 description: ''
-keywords:
+keywords: 博客，希亚的西红柿
 author: 希亚的西红柿
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://refrain.cf/
+url: http://refrain.cf
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:

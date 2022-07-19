@@ -1,0 +1,8 @@
+http://refrain.cf/tags/index.html
+http://refrain.cf/categories/index.html
+http://refrain.cf/2022/07/18/1/
+http://refrain.cf/about/index.html
+http://refrain.cf/
+http://refrain.cf/tags/cloudflare/
+http://refrain.cf/tags/%E5%9F%9F%E5%90%8D/
+http://refrain.cf/categories/DNS/

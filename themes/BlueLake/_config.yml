@@ -109,6 +109,7 @@ about:
     url: https://space.bilibili.com/325854600?spm_id_from=333.1007.0.0
     title: Bilibili
 
+
 # Gitalk comment
 gitalk:
   enable: false
@@ -163,5 +164,9 @@ links:
     url: https://space.bilibili.com/325854600?spm_id_from=333.1007.0.0
   - title: Github
     url: https://github.com/nova1751
+
+# Inject the css and script (aplayer/meting)
+
+
 
 

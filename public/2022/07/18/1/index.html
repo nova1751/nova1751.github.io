@@ -39,6 +39,10 @@
 
                                                 
                                                   
+                                                    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+                                                      
                                                         
                                                               <meta name="google-site-verification"
                                                                 content="IsI7PeWhW5DcnOiRY7JPCD2RYxwF5x-jhLX1gy5A880" />
@@ -93,12 +97,13 @@
 
           <div class="outer">
             <section id="main">
-              <article id="post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+              <article id="post-1" class="h-entry article article-type-post"
+  itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
-    
-      <header class="article-header">
-        
+      
+        <header class="article-header">
+          
   
     <h1 class="p-name article-title" itemprop="headline name">
       关于cloudflare对网站搭建的使用
@@ -106,29 +111,29 @@
   
 
 
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
+        </header>
+        
+          <div class="article-meta">
+            
+                <span class="article-date">
   <i class="fa fa-date"></i>
   <time class="dt-published" datetime="2022-07-18T10:54:13.000Z" itemprop="datePublished">2022年07月18日</time>
 </span>
-      
+                  
   <div class="article-category">
     <i class="fa fa-classify"></i>
     <a class="article-category-link" href="/categories/DNS/">DNS</a>
   </div>
 
-      
-        <span class="article-views">
+                    
+                      <span class="article-views">
   <i class="fa fa-views"></i>
   <i>
     <i id="busuanzi_value_page_pv"></i>
   </i>
 </span>
-      
-      
+                        
+                          
 <a href="/2022/07/18/1/#comments" class="article-comment-link">
   
     
@@ -142,10 +147,10 @@
 </a>
 
 
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="为hexo博客添加自定义域名">为hexo博客添加自定义域名</h2>
+          </div>
+          <div class="e-content article-entry" itemprop="articleBody">
+            
+                  <h2 id="为hexo博客添加自定义域名">为hexo博客添加自定义域名</h2>
 <blockquote>
 <p>域名注册方面不做赘述，下面详细讲述利用cloudflare中DNS解析域名至hexo博客站的过程</p>
 </blockquote>
@@ -180,9 +185,9 @@
 <img src="/2022/07/18/1/blog.png" alt></p>
 </blockquote>
 
-        
-            <div id="toc-article">
-                
+                    
+                      <div id="toc-article">
+                        
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
@@ -191,38 +196,59 @@
   </div>
 
 
-            </div>
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="http://refrain.cf/2022/07/18/1/">http://refrain.cf/2022/07/18/1/</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
+                      </div>
+                      
+                        
+                          <blockquote id="copyright">
+                            <p>
+                              原文链接: <a href="http://refrain.cf/2022/07/18/1/">
+                                  http://refrain.cf/2022/07/18/1/
+                                </a>
+                            </p>
+                            <p>
+                              版权声明: 转载请注明出处.
+                            </p>
+                          </blockquote>
+                          
+                            
+          </div>
+          <footer class="article-footer">
+            
+                  <div class="article-tag-wrap">
+                    
 
-          
+                      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li></ul>
 
-          
+                        
     <div class="social-share">
       <span>分享到:</span>
     </div>
 
 
 
-        </div>
-      
-      
+                  </div>
+                  
+                    
+                      
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/22/2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
         
-      
-      
+          关于Numpy的学习总结
         
+      </div>
+    </a>
+  
+</nav>
+
+                        
+                          
+                            
+  <div id="comments"></div>
 
 
 
@@ -231,11 +257,29 @@
 
 
 
-      
-    </footer>
+
+                              
+                                
+                                  <div id="gitalk-container"></div>
+                                  <link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+    new Gitalk({
+        clientID: 'b174a9675796c276c21e',
+        clientSecret: '6978a13887507cbe2a862bbb21a24e7e7d67b130',
+        repo: 'nova1751.github.io',
+        owner: 'nova1751',
+        admin: 'nova1751',
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    }).render('gitalk-container')
+</script>
+                                    
+
+          </footer>
   </div>
 </article>
-
             </section>
             
               <aside id="sidebar" >
@@ -245,6 +289,10 @@
     <h3 class="widget-title"><i class="fa fa-posts"></i> 最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/07/22/2/">关于Numpy的学习总结</a>
+          </li>
         
           <li>
             <a href="/2022/07/18/1/">关于cloudflare对网站搭建的使用</a>
@@ -260,7 +308,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/cloudflare/" style="font-size: 10px;">cloudflare</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a>
+      <a href="/tags/Numpy/" style="font-size: 10px;">Numpy</a> <a href="/tags/cloudflare/" style="font-size: 10px;">cloudflare</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a>
     </div>
   </div>
 
@@ -269,7 +317,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DNS/">DNS</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DNS/">DNS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -279,7 +327,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年07月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年07月</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -289,7 +337,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> 标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Numpy/" rel="tag">Numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -377,6 +425,7 @@
 
 
 
+
     
 <script src="/js/jquery-3.4.1.min.js"></script>
 
@@ -415,6 +464,27 @@
 
 
 
+  
+    
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+    
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+    <script>
+      var gitalk = new Gitalk({
+        clientID: 'b174a9675796c276c21e',
+        clientSecret: '6978a13887507cbe2a862bbb21a24e7e7d67b130',
+        repo: 'nova1751.github.io',
+        owner: 'nova1751',
+        admin: ['nova1751'],
+        id: md5(window.location.pathname),
+        distractionFreeMode: false,
+        language: 'zh-CN',
+        pagerDirection: 'last'
+      });
+      gitalk.render('comments');
+    </script>
   
 
   

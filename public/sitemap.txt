@@ -1,8 +1,13 @@
+http://refrain.cf/2022/07/22/2/
+http://refrain.cf/2022/07/18/1/
 http://refrain.cf/tags/index.html
 http://refrain.cf/categories/index.html
-http://refrain.cf/2022/07/18/1/
 http://refrain.cf/about/index.html
 http://refrain.cf/
 http://refrain.cf/tags/cloudflare/
 http://refrain.cf/tags/%E5%9F%9F%E5%90%8D/
+http://refrain.cf/tags/Numpy/
+http://refrain.cf/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/
+http://refrain.cf/tags/python/
 http://refrain.cf/categories/DNS/
+http://refrain.cf/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/

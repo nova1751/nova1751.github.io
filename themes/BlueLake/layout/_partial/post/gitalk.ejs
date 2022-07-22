@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+    new Gitalk({
+        clientID: 'b174a9675796c276c21e',
+        clientSecret: '6978a13887507cbe2a862bbb21a24e7e7d67b130',
+        repo: 'nova1751.github.io',
+        owner: 'nova1751',
+        admin: 'nova1751',
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    }).render('gitalk-container')
+</script>

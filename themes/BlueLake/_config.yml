@@ -112,12 +112,12 @@ about:
 
 # Gitalk comment
 gitalk:
-  enable: false
-  owner: ## Your GitHub ID, e.g. username
-  repo: ## The repository to store your comments, make sure you're the repo's owner, e.g. gitalk.github.io
-  client_id: ## GitHub client ID, e.g. 75752dafe7907a897619
-  client_secret: ## GitHub client secret, e.g. ec2fb9054972c891289640354993b662f4cccc50
-  admin: ## Github repo owner and collaborators, only these guys can initialize github issues.
+  enable: true
+  owner: nova1751 ## Your GitHub ID, e.g. username
+  repo:  nova1751.github.io     ## The repository to store your comments, make sure you're the repo's owner, e.g. gitalk.github.io
+  client_id: b174a9675796c276c21e ## GitHub client ID, e.g. 75752dafe7907a897619
+  client_secret: 6978a13887507cbe2a862bbb21a24e7e7d67b130 ## GitHub client secret, e.g. ec2fb9054972c891289640354993b662f4cccc50
+  admin: nova1751 ## Github repo owner and collaborators, only these guys can initialize github issues.
   language: 'zh-CN' ## Language
   pagerDirection: last # Comment sorting direction, available values are last and first.
 
@@ -165,7 +165,7 @@ links:
   - title: Github
     url: https://github.com/nova1751
 
-# Inject the css and script (aplayer/meting)
+
 
 
 

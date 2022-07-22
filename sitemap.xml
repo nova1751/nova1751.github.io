@@ -56,20 +56,6 @@
 
   
   <url>
-    <loc>http://refrain.cf/tags/cloudflare/</loc>
-    <lastmod>2022-07-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://refrain.cf/tags/%E5%9F%9F%E5%90%8D/</loc>
-    <lastmod>2022-07-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://refrain.cf/tags/Numpy/</loc>
     <lastmod>2022-07-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -90,17 +76,31 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>http://refrain.cf/categories/DNS/</loc>
+    <loc>http://refrain.cf/tags/cloudflare/</loc>
     <lastmod>2022-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
+    <loc>http://refrain.cf/tags/%E5%9F%9F%E5%90%8D/</loc>
+    <lastmod>2022-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
     <loc>http://refrain.cf/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://refrain.cf/categories/DNS/</loc>
     <lastmod>2022-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

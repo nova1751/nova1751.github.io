@@ -1,4 +1,4 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
@@ -106,43 +106,5 @@
     <priority>0.2</priority>
   </url>
   
-</urlset> -->
-<?xml version="1.0" encoding="UTF-8"?>
- <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   
-   <url>
-     <loc>https://nova1751.github.io2022/07/22/2/</loc>
-     
-     <lastmod>2022-07-22T13:17:15.225Z</lastmod>
-     
-  </url>
-  
-   <url>
-     <loc>https://nova1751.github.io2022/07/18/1/</loc>
-     
-     <lastmod>2022-07-22T12:19:06.057Z</lastmod>
-     
-  </url>
-  
-   <url>
-     <loc>https://nova1751.github.iotags/index.html</loc>
-     
-     <lastmod>2022-07-19T03:46:00.296Z</lastmod>
-     
-  </url>
-  
-   <url>
-     <loc>https://nova1751.github.iocategories/index.html</loc>
-     
-     <lastmod>2022-07-19T03:45:10.253Z</lastmod>
-     
-  </url>
-  
-   <url>
-     <loc>https://nova1751.github.ioabout/index.html</loc>
-     
-     <lastmod>2022-07-05T05:38:43.489Z</lastmod>
-     
-  </url>
-  
 </urlset>
+

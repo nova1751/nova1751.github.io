@@ -1,0 +1,933 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="default"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Intersection Observer | 希亚的西红柿のBlog</title><meta name="author" content="希亚的西红柿"><meta name="copyright" content="希亚的西红柿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="早就想好好总结一下 Intersection Observer 这个 API，苦于一直没有时间，今天就来好好总结一下这个 API。  本篇文章将介绍现代 WebAPI Intersection Observer(元素交集观察器)。  背景交叉观察器 API（Intersection Observer API）提供了一种异步检测目标元素与祖先元素或顶级文档的视口相交情况变化的方法。过去，要检测一个元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intersection Observer">
+<meta property="og:url" content="http://blog.refrain.site/posts/2afbd983/index.html">
+<meta property="og:site_name" content="希亚的西红柿のBlog">
+<meta property="og:description" content="早就想好好总结一下 Intersection Observer 这个 API，苦于一直没有时间，今天就来好好总结一下这个 API。  本篇文章将介绍现代 WebAPI Intersection Observer(元素交集观察器)。  背景交叉观察器 API（Intersection Observer API）提供了一种异步检测目标元素与祖先元素或顶级文档的视口相交情况变化的方法。过去，要检测一个元">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/jE29xmnMQvqT8oF.png">
+<meta property="article:published_time" content="2023-12-31T10:31:39.000Z">
+<meta property="article:modified_time" content="2023-12-31T14:10:53.000Z">
+<meta property="article:author" content="希亚的西红柿">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="WebAPI">
+<meta property="article:tag" content="Front End">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/12/31/jE29xmnMQvqT8oF.png"><link rel="shortcut icon" href="/"><link rel="canonical" href="http://blog.refrain.site/posts/2afbd983/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/images/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/images/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/images/16.png"/><link rel="mask-icon" href="/pwa/images/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nova1751/sources/scripts/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@latest/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@latest/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Intersection Observer',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-31 22:10:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" /><link rel="stylesheet" href="/css/custom.css" /><link rel="stylesheet" href="https://cdn.staticfile.org/prism-themes/1.9.0/prism-one-dark.min.css" /><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/nova1751/hexo-shiki-plugin@latest/lib/codeblock.min.css">
+<style>:root{--hl-color:#abb2bf;--hl-bg:#282c34;--hltools-bg:#21252b;--hltools-color:#bbbbbc;--hlnumber-bg:#282c34;--hlnumber-color:#495162;--hlscrollbar-bg:#373c47;--hlexpand-bg:linear-gradient(180deg,rgba(40,44,52,0.1),rgba(40,44,52,0.9))}</style>
+    <style>
+    .code-expand-btn:not(.expand-done) ~ div.codeblock,
+    .code-expand-btn:not(.expand-done) ~ * div.codeblock {
+      overflow: hidden;
+      height: 360px;
+    }
+    </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock-nova1751@latest/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="希亚的西红柿のBlog" type="application/atom+xml">
+</head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="https://npm.elemecdn.com/pace-js@latest/themes/blue/pace-theme-minimal.css"/><script src="https://npm.elemecdn.com/pace-js@latest/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/nova1751-sources/blogImg/noa.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/drive/"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/12/31/jE29xmnMQvqT8oF.png')"><nav id="nav"><span id="blog-info"><a href="/" title="希亚的西红柿のBlog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/nova1751-sources/blogImg/icon.png"/><span class="site-name">希亚的西红柿のBlog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/drive/"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Intersection Observer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-31T10:31:39.000Z" title="发表于 2023-12-31 18:31:39">2023-12-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-31T14:10:53.000Z" title="更新于 2023-12-31 22:10:53">2023-12-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JavaScript/">JavaScript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Intersection Observer"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="tip info"><p>早就想好好总结一下 Intersection Observer 这个 API，苦于一直没有时间，今天就来好好总结一下这个 API。</p>
+</div>
+<div class="tip home"><p>本篇文章将介绍现代 WebAPI Intersection Observer(元素交集观察器)。</p>
+</div>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>交叉观察器 API（Intersection Observer API）提供了一种<strong>异步</strong>检测目标元素与祖先元素或顶级文档的视口相交情况变化的方法。<br>过去，要检测一个元素是否可见或者两个元素是否相交并不容易，很多解决办法不可靠或性能很差。然而，随着互联网的发展，这种需求却与日俱增，比如，下面这些情况都需要用到相交检测：</p>
+<ul>
+<li>在页面滚动时“懒加载”图像或其他内容。</li>
+<li>实现“无限滚动”网站，在滚动过程中加载和显示越来越多的内容，这样用户就不必翻页了。</li>
+<li>报告广告的可见度，以便计算广告收入。</li>
+<li>根据用户是否能看到结果来决定是否执行任务或动画进程。</li>
+</ul>
+<p>交叉观察器 API 可令代码注册一个回调函数，当特定元素进入或退出与另一元素（或视口）的交集时，或者当两个元素之间的交集发生指定变化时，该函数就会被执行。这样，网站就不再需要在主线程上做任何事情来监视这种元素交集，浏览器也可以根据自己的需要优化交集管理。</p>
+<div class="note success flat"><p>由于该方法是异步的，所以不会有<code>Element.getBoundingClientRect()</code>等方法的性能问题。</p>
+</div>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>初始化对象<code>IntersectionObserver</code>对象。</p>
+<figure class="shiki js"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br></pre></div><div class="code"><pre class="shiki one-dark-pro"><code><span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">new</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">IntersectionObserver</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">callback</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">options</span><span style="color: #ABB2BF">);</span></span></code></pre></div></div></figure>
+<p>可以看到该配置函数有两个配置项：<code>callback</code>与<code>options</code>。我们分别来探讨这两个选项有什么作用：</p>
+<ol>
+<li><p><code>options</code><br><code>options</code>对象有三个配置选项。</p>
+<ul>
+<li><code>root</code>：用作视口的元素，用于检查目标的可见性。必须是目标的祖先。如果未指定或为 <code>null</code>，则默认为浏览器视口。</li>
+<li><code>rootMargin</code>：根周围的边距。其值可以类似于 <code>CSS margin</code> 属性，例如 “10px 20px 30px 40px”（上、右、下、左）。这些值可以是百分比。在计算交叉点之前，这组值用于增大或缩小根元素边框的每一侧。默认值为全零。下面会详细讲解。</li>
+<li><code>threshold</code>：一个数字或一个数字数组，表示目标可见度达到多少百分比时，观察器的回调就应该执行。如果只想在能见度超过 50% 时检测，可以使用 0.5 的值。如果希望每次能见度超过 25% 时都执行回调，则需要指定数组 [0, 0.25, 0.5, 0.75, 1]。默认值为 0（这意味着只要有一个像素可见，回调就会运行）。值为 1.0 意味着在每个像素都可见之前，阈值不会被认为已通过。</li>
+</ul>
+<figure class="shiki js"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div><div class="code"><pre class="shiki one-dark-pro"><code><span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">options</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">root</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">document</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">querySelector</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;#scrollArea&quot;</span><span style="color: #ABB2BF">),</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">rootMargin</span><span style="color: #ABB2BF">: </span><span style="color: #98C379">&quot;0px&quot;</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">threshold</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">1.0</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">};</span></span></code></pre></div></div></figure>
+</li>
+<li><p><code>callback</code><br><code>callback</code>作为交集的回调函数，执行特定的行为。</p>
+<figure class="shiki js"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div><div class="code"><pre class="shiki one-dark-pro"><code><span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">callback</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75; font-style: italic">entries</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75; font-style: italic">observer</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">entries</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">forEach</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">entry</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// 每个条目描述一个目标元素观测点的交叉变化：</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">//   entry.boundingClientRect</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">//   entry.intersectionRatio</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">//   entry.intersectionRect</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">//   entry.isIntersecting</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">//   entry.rootBounds</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">//   entry.target</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">//   entry.time</span></span>
+<span class="line"><span style="color: #ABB2BF">  });</span></span>
+<span class="line"><span style="color: #ABB2BF">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// 定义回调函数</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">callback</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75; font-style: italic">entries</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75; font-style: italic">observer</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// 遍历所有的交叉记录</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">for</span><span style="color: #ABB2BF"> (</span><span style="color: #C678DD">let</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">entry</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">of</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">entries</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// 如果目标元素和根元素有交叉</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> (</span><span style="color: #E5C07B">entry</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">isIntersecting</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 打印交叉比例</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E5C07B">console</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">log</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">entry</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">intersectionRatio</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 停止观察</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">unobserve</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">entry</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">target</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  }</span></span>
+<span class="line"><span style="color: #ABB2BF">};</span></span></code></pre></div></div></figure>
+<div class="note warning flat"><p>请留意，你注册的回调函数将会在主线程中被执行。所以该函数执行速度要尽可能的快。如果需要执行任何耗时的操作，请使用 <code>Window.requestIdleCallback()</code>。</p>
+</div>
+</li>
+</ol>
+<h2 id="配置项详解"><a href="#配置项详解" class="headerlink" title="配置项详解"></a>配置项详解</h2><h3 id="root-根元素"><a href="#root-根元素" class="headerlink" title="root(根元素)"></a>root(根元素)</h3><p>在跟踪元素与容器的交集之前，我们需要知道容器是什么。这个容器就是交集根，或根元素。它可以是文档中作为要观察元素的祖先的特定元素，也可以是 <code>null</code>，即使用文档的视口作为容器。<br><div class="note info flat"><p>注意一般视口用的较多，由于大多数子元素一开始就相交，所以很少使用。判断与父元素相交。</p>
+</div></p>
+<h3 id="threshold-阈值"><a href="#threshold-阈值" class="headerlink" title="threshold(阈值)"></a>threshold(阈值)</h3><p>交叉观察器 <code>API</code> 使用阈值，而不是报告目标元素可见度的每一个微小变化。创建观察器时，可以提供一个或多个数值，代表目标元素可见度的百分比。然后，<code>API</code> 只报告超过这些阈值的可见性变化。</p>
+<p>例如，如果希望每次目标元素的可见度向后或向前越过每个 <code>25%</code> 的标记时都能得到通知，可以在创建观察器时指定数组 <code>[0, 0.25, 0.5, 0.75, 1]</code> 作为阈值列表。</p>
+<h3 id="rootMargin"><a href="#rootMargin" class="headerlink" title="rootMargin"></a>rootMargin</h3><p>给根元素添加<code>margin</code>边距实现收缩的效果<br>正值矩形向外扩张，负值矩形向内收缩。</p>
+<p>结合下面这个例子进行理解</p>
+<figure class="shiki html"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></div><div class="code"><pre class="shiki one-dark-pro"><code><span class="line"><span style="color: #ABB2BF">&lt;!</span><span style="color: #E06C75">DOCTYPE</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">html</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">&lt;</span><span style="color: #E06C75">html</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">lang</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;zh-CN&quot;</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">  &lt;</span><span style="color: #E06C75">head</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">meta</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">charset</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;UTF-8&quot;</span><span style="color: #ABB2BF"> /&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">meta</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">name</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;viewport&quot;</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">content</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;width=device-width, initial-scale=1.0&quot;</span><span style="color: #ABB2BF"> /&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">title</span><span style="color: #ABB2BF">&gt;Document&lt;/</span><span style="color: #E06C75">title</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">style</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #D19A66">.red-box</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">        width: </span><span style="color: #D19A66">50</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        height: </span><span style="color: #D19A66">50</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        background-color: </span><span style="color: #D19A66">red</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        position: </span><span style="color: #D19A66">absolute</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        left: </span><span style="color: #D19A66">200</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #D19A66">.outer</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">        width: </span><span style="color: #D19A66">100</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        height: </span><span style="color: #D19A66">100</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        background-color: cyan;</span></span>
+<span class="line"><span style="color: #ABB2BF">        position: </span><span style="color: #D19A66">relative</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">*</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">        margin: </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        padding: </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        box-sizing: </span><span style="color: #D19A66">border-box</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E06C75">body</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">        width: </span><span style="color: #D19A66">7000</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        height: </span><span style="color: #D19A66">7000</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        padding-top: </span><span style="color: #D19A66">2000</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;/</span><span style="color: #E06C75">style</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">  &lt;/</span><span style="color: #E06C75">head</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">  &lt;</span><span style="color: #E06C75">body</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">class</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;outer&quot;</span><span style="color: #ABB2BF">&gt;&lt;</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">class</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;red-box&quot;</span><span style="color: #ABB2BF">&gt;&lt;/</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF">&gt;&lt;/</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">script</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 创建一个交叉观察器</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">let</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">observer</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">new</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">IntersectionObserver</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">callback</span><span style="color: #ABB2BF">, {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">root</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">document</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">querySelector</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;.outer&quot;</span><span style="color: #ABB2BF">), </span><span style="color: #7F848E; font-style: italic">// 根元素是视口</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">rootMargin</span><span style="color: #ABB2BF">: </span><span style="color: #98C379">&quot;100px -50px 100px 100px&quot;</span><span style="color: #ABB2BF">, </span><span style="color: #7F848E; font-style: italic">// 根元素的边界框偏移量</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">threshold</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">, </span><span style="color: #7F848E; font-style: italic">// 交叉比例阈值</span></span>
+<span class="line"><span style="color: #ABB2BF">      });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 选择目标元素</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">let</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">target</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">document</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">querySelector</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;.red-box&quot;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 开始观察目标元素</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">observe</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">target</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 定义回调函数</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">function</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">callback</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75; font-style: italic">entries</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75; font-style: italic">observer</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E5C07B">console</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">log</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #7F848E; font-style: italic">// 遍历所有的交叉记录</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #C678DD">for</span><span style="color: #ABB2BF"> (</span><span style="color: #C678DD">let</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">entry</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">of</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">entries</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #E5C07B">console</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">log</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">2</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #7F848E; font-style: italic">// 如果目标元素和根元素有交叉</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> (</span><span style="color: #E5C07B">entry</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">isIntersecting</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #7F848E; font-style: italic">// 打印交叉比例</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #E5C07B">console</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">log</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">entry</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">intersectionRatio</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #7F848E; font-style: italic">// 停止观察</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #7F848E; font-style: italic">// observer.unobserve(entry.target);</span></span>
+<span class="line"><span style="color: #ABB2BF">          }</span></span>
+<span class="line"><span style="color: #ABB2BF">        }</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;/</span><span style="color: #E06C75">script</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">  &lt;/</span><span style="color: #E06C75">body</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">&lt;/</span><span style="color: #E06C75">html</span><span style="color: #ABB2BF">&gt;</span></span></code></pre></div></div></figure>
+<h3 id="callback"><a href="#callback" class="headerlink" title="callback"></a>callback</h3><ol>
+<li>页面渲染后会执行一次，无论是否相交。</li>
+<li>每次进入和离开各执行一次。</li>
+</ol>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h3><p>同上<code>options</code>选项。</p>
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><ol>
+<li><code>disconnect</code>：通知所有对象的监视。<figure class="shiki js"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br></pre></div><div class="code"><pre class="shiki one-dark-pro"><code><span class="line"><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">disconnect</span><span style="color: #ABB2BF">();</span></span></code></pre></div></div></figure></li>
+<li><code>observe</code>：观察一个对象。</li>
+<li><code>unobserve</code>：停止观察。</li>
+<li><code>takeRecords</code><br>takeRecords 方法的用途是在停止观察之前获取所有<strong>未处理</strong>的交叉记录，以便在回调函数中处理它们。这个方法返回一个 IntersectionObserverEntry 对象数组，每个对象包含目标元素与根每次的相交信息。<br>如果你使用回调来监视这些更改，则无需调用此方法。调用此方法会清除挂起的相交状态列表，因此不会运行回调。<div class="note info flat"><p>比较鸡肋很少用到。</p>
+</div>
+</li>
+</ol>
+<h3 id="IntersectionObserverEntry"><a href="#IntersectionObserverEntry" class="headerlink" title="IntersectionObserverEntry"></a>IntersectionObserverEntry</h3><p><strong>属性：</strong></p>
+<ul>
+<li><code>boundingClientRect</code>：返回目标元素的平面矩形。</li>
+<li><code>intersectionRatio</code>：相交多少。</li>
+<li><code>intersectionRect</code>：相交的部分的平面矩形。</li>
+<li><code>isIntersecting</code>：是否相交。</li>
+<li><code>rootBounds</code>：使用<code>rootMargin</code>计算后的平面矩阵。</li>
+<li><code>target</code>：目标元素。</li>
+<li><code>time</code>：交集状态发生改变的时候的时间戳。</li>
+</ul>
+<h2 id="基本用例"><a href="#基本用例" class="headerlink" title="基本用例"></a>基本用例</h2><ol>
+<li><p>图片懒加载</p>
+<ul>
+<li><p>工具函数</p>
+<figure class="shiki ts"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div><div class="code"><pre class="shiki one-dark-pro"><code><span class="line"><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> { </span><span style="color: #E06C75">ref</span><span style="color: #ABB2BF"> } </span><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;vue&quot;</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">useIntersectionObserver</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> (</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75; font-style: italic">target</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">HTMLElement</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #61AFEF">callback</span><span style="color: #ABB2BF">: (</span><span style="color: #E06C75; font-style: italic">isIntersecting</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">boolean</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">void</span></span>
+<span class="line"><span style="color: #ABB2BF">): (() </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">void</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">ref</span><span style="color: #ABB2BF">&lt;</span><span style="color: #E5C07B">IntersectionObserver</span><span style="color: #ABB2BF"> | </span><span style="color: #E5C07B">null</span><span style="color: #ABB2BF">&gt;(</span><span style="color: #D19A66">null</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">handleIntersect</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">IntersectionObserverCallback</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75; font-style: italic">entries</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// console.log(&#39;test&#39;)</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">isIntersecting</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">entries</span><span style="color: #ABB2BF">[</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">].</span><span style="color: #E06C75">isIntersecting</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #61AFEF">callback</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">isIntersecting</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">observeElement</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> () </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75">target</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">&amp;&amp;</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">value</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">value</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">observe</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">target</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">unobserveElement</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> () </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75">target</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">&amp;&amp;</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">value</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">value</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">unobserve</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">target</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">createObserver</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> () </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75">target</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">value</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">new</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">IntersectionObserver</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">handleIntersect</span><span style="color: #ABB2BF">, {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #7F848E; font-style: italic">// 配置对象，指定根元素为视口，阈值为0.1</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">root</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">null</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E06C75">threshold</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">0.1</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">      });</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #61AFEF">observeElement</span><span style="color: #ABB2BF">();</span></span>
+<span class="line"><span style="color: #ABB2BF">    }</span></span>
+<span class="line"><span style="color: #ABB2BF">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #61AFEF">createObserver</span><span style="color: #ABB2BF">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">unobserveElement</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">default</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">useIntersectionObserver</span><span style="color: #ABB2BF">;</span></span></code></pre></div></div></figure>
+</li>
+<li><p>指令封装</p>
+<figure class="shiki js"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div><div class="code"><pre class="shiki one-dark-pro"><code><span class="line"><span style="color: #C678DD">export</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">lazyPlugin</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">Plugin</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #61AFEF">install</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75; font-style: italic">app</span><span style="color: #ABB2BF">: </span><span style="color: #E5C07B">App</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E5C07B">app</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">directive</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;img-lazy&quot;</span><span style="color: #ABB2BF">, {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #61AFEF">mounted</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75; font-style: italic">el</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75; font-style: italic">binding</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">stop</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">useIntersectionObserver</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">el</span><span style="color: #ABB2BF">, (</span><span style="color: #E06C75; font-style: italic">isIntersecting</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75">isIntersecting</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #7F848E; font-style: italic">// console.log(&#39;test&#39;)</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #E5C07B">el</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">binding</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">value</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #61AFEF">stop</span><span style="color: #ABB2BF">();</span></span>
+<span class="line"><span style="color: #ABB2BF">          }</span></span>
+<span class="line"><span style="color: #ABB2BF">        });</span></span>
+<span class="line"><span style="color: #ABB2BF">      },</span></span>
+<span class="line"><span style="color: #ABB2BF">    });</span></span>
+<span class="line"><span style="color: #ABB2BF">  },</span></span>
+<span class="line"><span style="color: #ABB2BF">};</span></span></code></pre></div></div></figure>
+</li>
+</ul>
+</li>
+<li><p>无限滚动<br>底层元素进入视口就开始加载</p>
+<figure class="shiki html"><div class='codeblock'><div class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></div><div class="code"><pre class="shiki one-dark-pro"><code><span class="line"><span style="color: #ABB2BF">&lt;!</span><span style="color: #E06C75">DOCTYPE</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">html</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">&lt;</span><span style="color: #E06C75">html</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">lang</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;en&quot;</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">  &lt;</span><span style="color: #E06C75">head</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">meta</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">charset</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;UTF-8&quot;</span><span style="color: #ABB2BF"> /&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">meta</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">name</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;viewport&quot;</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">content</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;width=device-width, initial-scale=1.0&quot;</span><span style="color: #ABB2BF"> /&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">title</span><span style="color: #ABB2BF">&gt;Infinite Scrolling Example&lt;/</span><span style="color: #E06C75">title</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">style</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #D19A66">.container</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">        max-width: </span><span style="color: #D19A66">800</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        margin: </span><span style="color: #D19A66">auto</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #D19A66">.post</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">        border: </span><span style="color: #D19A66">1</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">solid</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">gray</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        padding: </span><span style="color: #D19A66">20</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        margin: </span><span style="color: #D19A66">20</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #D19A66">.loading</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">        text-align: </span><span style="color: #D19A66">center</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">        font-size: </span><span style="color: #D19A66">24</span><span style="color: #E06C75">px</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;/</span><span style="color: #E06C75">style</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">  &lt;/</span><span style="color: #E06C75">head</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">  &lt;</span><span style="color: #E06C75">body</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">h1</span><span style="color: #ABB2BF">&gt;Infinite Scrolling Example&lt;/</span><span style="color: #E06C75">h1</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">&lt;!-- 创建一个容器元素，用来存放内容 --&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">class</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;container&quot;</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">&lt;!-- 创建一个占位元素，用来触发无限滚动 --&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">      &lt;</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">id</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;sentinel&quot;</span><span style="color: #ABB2BF">&gt;&lt;/</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">&lt;!-- 创建一个加载提示元素 --&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">      &lt;</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">class</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&quot;loading&quot;</span><span style="color: #ABB2BF">&gt;Loading...&lt;/</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;/</span><span style="color: #E06C75">div</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;</span><span style="color: #E06C75">script</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 获取容器元素和占位元素</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">container</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">document</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">querySelector</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;.container&quot;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">sentinel</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">document</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">querySelector</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;#sentinel&quot;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 定义一个变量，用来存储当前加载的页数</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">let</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">page</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 定义一个函数，用来模拟从服务器获取数据</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">function</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">getData</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75; font-style: italic">page</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #7F848E; font-style: italic">// 返回一个Promise对象，用来异步处理数据</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #C678DD">return</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">new</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">Promise</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">resolve</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75; font-style: italic">reject</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #7F848E; font-style: italic">// 使用setTimeout模拟网络延迟</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #61AFEF">setTimeout</span><span style="color: #ABB2BF">(() </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #7F848E; font-style: italic">// 使用fetch API请求一个随机用户生成器的API，传入页数参数</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #61AFEF">fetch</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">`https://randomuser.me/api/?page=</span><span style="color: #C678DD">${</span><span style="color: #E06C75">page</span><span style="color: #C678DD">}</span><span style="color: #98C379">&amp;results=10`</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">              .</span><span style="color: #61AFEF">then</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">response</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">response</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">json</span><span style="color: #ABB2BF">()) </span><span style="color: #7F848E; font-style: italic">// 把响应转换为JSON格式</span></span>
+<span class="line"><span style="color: #ABB2BF">              .</span><span style="color: #61AFEF">then</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">data</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">resolve</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">data</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">results</span><span style="color: #ABB2BF">)) </span><span style="color: #7F848E; font-style: italic">// 把数据传给resolve函数</span></span>
+<span class="line"><span style="color: #ABB2BF">              .</span><span style="color: #61AFEF">catch</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">error</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">reject</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">error</span><span style="color: #ABB2BF">)); </span><span style="color: #7F848E; font-style: italic">// 如果出错，把错误传给reject函数</span></span>
+<span class="line"><span style="color: #ABB2BF">          }, </span><span style="color: #D19A66">1000</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">        });</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 定义一个函数，用来渲染数据到页面上</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">function</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">renderData</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75; font-style: italic">data</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #7F848E; font-style: italic">// 遍历数据数组</span></span>
+<span class="line"><span style="color: #ABB2BF">        </span><span style="color: #E5C07B">data</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">forEach</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">item</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #7F848E; font-style: italic">// 创建一个div元素，用来存放每个用户的信息</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">post</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">document</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">createElement</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;div&quot;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #7F848E; font-style: italic">// 给div元素添加post类名</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #E5C07B">post</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">classList</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">add</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;post&quot;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #7F848E; font-style: italic">// 给div元素添加内容，使用模板字符串插入用户的姓名、邮箱和头像等信息</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #E5C07B">post</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">innerHTML</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">`</span></span>
+<span class="line"><span style="color: #98C379">            &lt;h2&gt;</span><span style="color: #C678DD">${</span><span style="color: #E5C07B">item</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">name</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">first</span><span style="color: #C678DD">}</span><span style="color: #98C379"> </span><span style="color: #C678DD">${</span><span style="color: #E5C07B">item</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">name</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">last</span><span style="color: #C678DD">}</span><span style="color: #98C379">&lt;/h2&gt;</span></span>
+<span class="line"><span style="color: #98C379">            &lt;p&gt;</span><span style="color: #C678DD">${</span><span style="color: #E5C07B">item</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">email</span><span style="color: #C678DD">}</span><span style="color: #98C379">&lt;/p&gt;</span></span>
+<span class="line"><span style="color: #98C379">            &lt;img src=&quot;</span><span style="color: #C678DD">${</span><span style="color: #E5C07B">item</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">picture</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">large</span><span style="color: #C678DD">}</span><span style="color: #98C379">&quot; alt=&quot;</span><span style="color: #C678DD">${</span><span style="color: #E5C07B">item</span><span style="color: #ABB2BF">.</span><span style="color: #E5C07B">name</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">first</span><span style="color: #C678DD">}</span><span style="color: #98C379">&quot;&gt;</span></span>
+<span class="line"><span style="color: #98C379">            `</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #7F848E; font-style: italic">// 把div元素插入到容器元素的最后一个子元素之前，也就是占位元素之前</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #E5C07B">container</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">insertBefore</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">post</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">sentinel</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">        });</span></span>
+<span class="line"><span style="color: #ABB2BF">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 创建一个IntersectionObserver对象，传入一个回调函数和一个配置对象</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">new</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF">IntersectionObserver</span><span style="color: #ABB2BF">(</span></span>
+<span class="line"><span style="color: #ABB2BF">        (</span><span style="color: #E06C75; font-style: italic">entries</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #7F848E; font-style: italic">// 如果占位元素与视口相交</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> (</span><span style="color: #E06C75">entries</span><span style="color: #ABB2BF">[</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">].</span><span style="color: #E06C75">isIntersecting</span><span style="color: #ABB2BF">) {</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #7F848E; font-style: italic">// 调用getData函数，传入当前的页数，获取数据</span></span>
+<span class="line"><span style="color: #ABB2BF">            </span><span style="color: #61AFEF">getData</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">page</span><span style="color: #ABB2BF">)</span></span>
+<span class="line"><span style="color: #ABB2BF">              .</span><span style="color: #61AFEF">then</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">data</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">                </span><span style="color: #7F848E; font-style: italic">// 调用renderData函数，渲染数据到页面上</span></span>
+<span class="line"><span style="color: #ABB2BF">                </span><span style="color: #61AFEF">renderData</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">data</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">                </span><span style="color: #7F848E; font-style: italic">// 页数加一，准备下一次加载</span></span>
+<span class="line"><span style="color: #ABB2BF">                </span><span style="color: #E06C75">page</span><span style="color: #56B6C2">++</span><span style="color: #ABB2BF">;</span></span>
+<span class="line"><span style="color: #ABB2BF">              })</span></span>
+<span class="line"><span style="color: #ABB2BF">              .</span><span style="color: #61AFEF">catch</span><span style="color: #ABB2BF">((</span><span style="color: #E06C75; font-style: italic">error</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">                </span><span style="color: #7F848E; font-style: italic">// 如果出错，打印错误信息</span></span>
+<span class="line"><span style="color: #ABB2BF">                </span><span style="color: #E5C07B">console</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">error</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">error</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">              });</span></span>
+<span class="line"><span style="color: #ABB2BF">          }</span></span>
+<span class="line"><span style="color: #ABB2BF">        },</span></span>
+<span class="line"><span style="color: #ABB2BF">        {</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #7F848E; font-style: italic">// 配置对象，指定根元素为视口，阈值为1</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #E06C75">root</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">null</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">          </span><span style="color: #E06C75">threshold</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">        }</span></span>
+<span class="line"><span style="color: #ABB2BF">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #7F848E; font-style: italic">// 调用observe方法，传入占位元素，开始观察它</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #E5C07B">observer</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">observe</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">sentinel</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #ABB2BF">    &lt;/</span><span style="color: #E06C75">script</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">  &lt;/</span><span style="color: #E06C75">body</span><span style="color: #ABB2BF">&gt;</span></span>
+<span class="line"><span style="color: #ABB2BF">&lt;/</span><span style="color: #E06C75">html</span><span style="color: #ABB2BF">&gt;</span></span></code></pre></div></div></figure>
+<details class="folding-tag" green><summary> 无限滚动的另一种方式就是触底加载 </summary>
+              <div class='content'>
+              <ul><li><p><code>scrollHeight</code> 是一个元素内容高度的度量，包含由于溢出导致的视图中不可见内容。也就是说，如果一个元素的内容超出了它的可视区域，那么它的 <code>scrollHeight</code> 就会大于它的可视区域的高度。<code>scrollHeight</code> 的值等于元素的最小高度，使得所有的内容都能在不使用垂直滚动条的情况下显示在视图中。<code>scrollHeight</code> 的计算方式和 <code>clientHeight</code> 相同：它包含了元素的内边距，但不包括边框、外边距或水平滚动条（如果有的话）。它也可以包括伪元素（如 :<code>:before</code> 或 <code>::after</code>）的高度。</p></li><li><p><code>clientHeight</code> 是元素内部的高度（单位像素），包含内边距，但不包括水平滚动条、边框和外边距。也就是说，它是元素的可视区域的高度。如果元素的内容没有超出可视区域，那么它的 <code>clientHeight</code> 就等于它的 <code>scrollHeight</code>。</p></li><li><code>scrollTop</code> 是获取或设置一个元素的内容垂直滚动的像素数。也就是说，它是元素的内容顶部和元素的可视区域顶部之间的距离。当元素的内容没有滚动时，它的 <code>scrollTop</code> 为 0。当元素的内容向下滚动时，它的 <code>scrollTop</code> 会增加，直到滚动到内容的底部。</li></ul><p>这三个属性的关系可以用下面的公式表示：</p><ul><li>当元素的内容没有滚动时，<code>scrollTop = 0</code>，<code>clientHeight = scrollHeight</code>。</li><li>当元素的内容向下滚动时，<code>scrollTop &gt; 0</code>，<code>clientHeight &lt; scrollHeight</code>。</li><li>当元素的内容滚动到底部时，<code>scrollTop + clientHeight = scrollHeight</code>。</li></ul><p>这三个属性可以用来实现一些常见的功能，例如：</p><ul><li>判断一个元素是否可以滚动，可以检查它的 <code>scrollHeight</code> 是否大于它的 <code>clientHeight</code>。</li><li>判断一个元素是否已经滚动到底部，可以检查它的 <code>scrollTop + clientHeight</code> 是否等于或接近它的 <code>scrollHeight</code>。</li><li>判断一个用户是否已经阅读了一个文本，可以检查一个文本框的 <code>scrollTop + clientHeight</code> 是否等于它的 <code>scrollHeight</code>。</li></ul>
+              </div>
+            </details>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://blog.refrain.site">希亚的西红柿</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.refrain.site/posts/2afbd983/">http://blog.refrain.site/posts/2afbd983/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.refrain.site" target="_blank">希亚的西红柿のBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/tags/WebAPI/">WebAPI</a><a class="post-meta__tags" href="/tags/Front-End/">Front End</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/12/31/jE29xmnMQvqT8oF.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/butterfly-extsrc@latest/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/butterfly-extsrc@latest/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1afd9955/" title="TypeSript笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2024/01/01/bvZiKsM2zYBIf7H.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">TypeSript笔记</div></div></a></div><div class="next-post pull-right"><a href="/posts/acc0017d/" title="数据结构与算法笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/12/11/ZmVdnztJ6MRrq7w.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据结构与算法笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/a1605017/" title="React笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/12/04/SxYNCPRkihQHXLn.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-04</div><div class="title">React笔记</div></div></a></div><div><a href="/posts/adf5c49/" title="Vue2笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/11/24/DdC1QyeWBFzhfGA.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-24</div><div class="title">Vue2笔记</div></div></a></div><div><a href="/posts/3c94855e/" title="Vue3笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/11/25/Tec3u9LNntZhsx6.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-25</div><div class="title">Vue3笔记</div></div></a></div><div><a href="/posts/b2b6ba06/" title="JS拾遗笔记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/10/23/VgnNT54UXmAsSrL.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-23</div><div class="title">JS拾遗笔记</div></div></a></div><div><a href="/posts/35a88b44/" title="JS事件循环"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/10/20/HSRtjCFenDq6cGb.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-20</div><div class="title">JS事件循环</div></div></a></div><div><a href="/posts/2275c8/" title="深入了解Promise"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/10/16/9BG4PtNVgiqTQAE.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-16</div><div class="title">深入了解Promise</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/nova1751-sources/blogImg/noa.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">希亚的西红柿</div><div class="author-info__description">个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nova1751"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:nova1751@outlook.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/325854600" rel="external nofollow noreferrer" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="https://t.me/nova1751" rel="external nofollow noreferrer" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本网站评论系统使用的是 <span class="hl-label" style="background: rgb(73, 177, 245);border-radius: 6px">Twikoo</span>,若头像没有正常显示，请自行前往 <a class="hl-label" target="_blank" rel="noopener external nofollow noreferrer" href="https://cravatar.cn">Cravatar</a>绑定邮箱配置。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">配置项详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#root-%E6%A0%B9%E5%85%83%E7%B4%A0"><span class="toc-number">3.1.</span> <span class="toc-text">root(根元素)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#threshold-%E9%98%88%E5%80%BC"><span class="toc-number">3.2.</span> <span class="toc-text">threshold(阈值)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rootMargin"><span class="toc-number">3.3.</span> <span class="toc-text">rootMargin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#callback"><span class="toc-number">3.4.</span> <span class="toc-text">callback</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-number">4.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7"><span class="toc-number">4.1.</span> <span class="toc-text">实例属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">实例方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IntersectionObserverEntry"><span class="toc-number">4.3.</span> <span class="toc-text">IntersectionObserverEntry</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E4%BE%8B"><span class="toc-number">5.</span> <span class="toc-text">基本用例</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/acc0017d/" title="数据结构与算法笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/12/11/ZmVdnztJ6MRrq7w.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构与算法笔记"/></a><div class="content"><a class="title" href="/posts/acc0017d/" title="数据结构与算法笔记">数据结构与算法笔记</a><time datetime="2024-08-18T06:34:16.000Z" title="更新于 2024-08-18 14:34:16">2024-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/300a8ca5/" title="虚拟列表"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2024/08/07/PguCDbyn4RSfzqA.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟列表"/></a><div class="content"><a class="title" href="/posts/300a8ca5/" title="虚拟列表">虚拟列表</a><time datetime="2024-08-07T14:00:05.000Z" title="更新于 2024-08-07 22:00:05">2024-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/aac5e919/" title="JS手写题大汇总"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2024/01/02/iZE5AlbUXChmN2t.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS手写题大汇总"/></a><div class="content"><a class="title" href="/posts/aac5e919/" title="JS手写题大汇总">JS手写题大汇总</a><time datetime="2024-05-30T02:19:03.000Z" title="更新于 2024-05-30 10:19:03">2024-05-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/adf5c49/" title="Vue2笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/11/24/DdC1QyeWBFzhfGA.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue2笔记"/></a><div class="content"><a class="title" href="/posts/adf5c49/" title="Vue2笔记">Vue2笔记</a><time datetime="2024-05-10T10:01:20.000Z" title="更新于 2024-05-10 18:01:20">2024-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b672a0f6/" title="LeetCode 算法笔记 Part2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2024/02/25/SGcqKat5L3peFsE.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 算法笔记 Part2"/></a><div class="content"><a class="title" href="/posts/b672a0f6/" title="LeetCode 算法笔记 Part2">LeetCode 算法笔记 Part2</a><time datetime="2024-04-15T16:17:32.000Z" title="更新于 2024-04-16 00:17:32">2024-04-16</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025 By 希亚的西红柿</div><div class="footer_custom_text"><p class="para"><a target="_blank"style="display: inline-block; margin-inline: 5px"href="https://hexo.io/" rel="external nofollow noreferrer"title="博客框架为Hexo_v5.4.2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo"/></a><a target="_blank"style="display: inline-block; margin-inline: 5px"href="https://butterfly.js.org/" rel="external nofollow noreferrer"title="主题版本Butterfly_v4.9.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender"/></a><a target="_blank"style="display: inline-block; margin-inline: 5px"href="https://github.com/" rel="external nofollow noreferrer"title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub"/></a><a target="_blank"style="display: inline-block; margin-inline: 5px"href="https://www.jsdelivr.com/" rel="external nofollow noreferrer"title="本站使用JsDelivr为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr"/></a><a target="_blank"style="display: inline-block; margin-inline: 5px"href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer"title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris"/></a><a target="_blank"style="display: inline-block; margin-inline: 5px"href="https://icp.gov.moe/?keyword=20231751" rel="external nofollow noreferrer"title="萌ICP备20231751号"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/%E8%90%8CICP%E5%A4%87-20231751-fe1384?style-flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+nhxg7wAAByxJREFUSInl1nlwVeUZx/HPuTckkD0kQFiCEEIUlNUCAqKoSBV1AIt1ikpVLFbLONjWGUXbmWrbweJMy7hUxbbTjsUq6KCiWEvr0kE2WVK2QCKBJCxJgEASsienfxwqMob+3Zm+f93z3vM+32f5vc9z+H9bwVcfOp/YQ+1prhhEZS1VDQzqQ1MjiQmIC5Liwm3lBWpqFimrulb/7A/067vM2IsOBZ2h8MhJQW6KMDNVsKeaizKEyUlsKueqgWJ39AMJF3QpDCNYr1SaEig/lWNX2Z1h6dH5/lVyGdVIZFf7MHo9bEfh9rCg/+8NyHlN77QTsnpQ0i2y08VK+BosfhbW0cHxqmSfFd9qW+l9Pi+5WltFdGTsOBbO5dJcdh3lN5+xff0Y2zuelXjRsyYUrjOu4BVJaavlpbWIJRBLOM+J81O95AAnTtM9vNHGknut3zdT48FutJE3koWTuG4oSXH+VsInX3B9IdcVUNfCuv08t4GjO6NspOa3BNcOXx1eOugVHQnrTMkTuyWrC/BjRZO9uPYTpw7HhTWkXcLd45l9GblpHD7NWzt5ZTMXZ/OdkTy+lvR07rmcmWffq6pn9W5e/oymfcT6kJbXHiydMyVYkL/x66n+ZMcctQfjhgxl6UIGZ3Ooltd2RIZqjqKRS0ew9cFIA1cO5urlLHuPZWsZPJiZw7gqn0VT2HCIR9+jvCQhfHPrLGyE2Hng2roBxHnmJoZnc9drbD3I6QaaWkjpSVoeu4+x5XB05qMDqCenHz37UHmcFRv54ZuMeoYrB/L0DPRgZ0WfrsXVKzPX3nYykrn3dUZl8+Q0Qox/gc/L6ZlKzxQefo+UROpa6Z4VCedkPd8YyJYHI3u5T/HAShZNQxsXZfR3pCtwRW066VEeOuIUVUf77+9jTw2pycTOJml7Je1t9EgiI5X2jkgyze1fCSSdtjhBiJCkpKyuI+5oTdAtkTCgVwrbKsl8ko6QjO40tZ67EpkpdIbRf20dkbPpPTjdwsSX6I5dJYy4hoQAaZQdDy4A1iEMI613T6LtBPXJpPakrjGqc1Y6CTFq62htJp5KRwPJKWSkU3WKiiPEEqO6xgM6oZmctJhDXYH7Z59xuCyKpK6R26ZE+ys3MWYoN1/Mc5uoqmbEQJ6fTc/ulJ3i/lUc+YIfzeKhKzjVHN31A3XRHddKSrf6/6DOV3VTcw1hVKfkxOhaPDAe1UwfwmNTqT1Drxw+nE9xNXetIjHG2vnoxoT+rNrN2Of58Rp6JZ+ldKes5kjX4G7dKuikpoERfaltYnQ/DOSS3hEAFk9lXQkLnmf7Ib65lPJT3HU1+46Tm8rYvgzKYVA2h+vQIMjvewHwdSN20MiOSmZczO4a1hSzYi77T7CiiPF5JMTZexjJ5OagkwNV9M+MnJ09nKU3smgyQ3PYWoEO4fUjii4QceJmevJuMeP6csUAln4atcbSGoqOUpjD30uZNwnpHNtN3lC+NZa1xeT34pGVTJ3PL9+Ohs6GQ8gVtHZs6VLVwZhBReGwoXvt3THM/hP0SWVnCR8f4PMjkffjB/DQS8waxpHFfFgaaeHZDRRtJn0yP5tF31ymFVJ2nN27GD66KBzca2/XEWdkUpD3Fmd4tYj0FMS54Q9UnuaDUv6yE/24ewWP/DU6N/d1fvousYEs28DyLVEvGDOAt/egmSkXv2VYn3NBfpXbua6J8hMFFvy2RHsL+57gmX+w/AN651PfEDWQzLRI+afqIqOxFDJT6Rbn9Bmad3PnTH5wIxOXkJTWGiz57hCDsyqDWVldRNzeyOh+paaPfpFKnvqQX88iZwDVx0lLJqUHbe3EkZ1Odm+yUqK2GHYKmhvIG8fyeTz9IY5x67jnFPapdPDkl6jzwEF9IDjZJlgwfbG+o2u8+g4rd7D/UYI41TXnevV5K4j2q6uESckUP8rvNrH6fUH/sRXB9AlPONMSDZ8uazwoi56JjEyvdftV88jinhf4uIzmJRQOoOYgja0RKAiIBZxpjvZH5tP0c97axcLlyBXOuWZemJTYFFbUCU+1dl3j8PGSyFhnJ7EkYcWh7/njqpep5xfzWTyZZ7dEg73xOJKiGqf3YenNLBjLTz7i539COg/OvSOYO2GFo/VRG0Zwe0YX4Ns3R7NXSCxBeM8IthXfZvGf3xCWc/kkXvg2vVP4YB/rDzC1gGlDo+50/xvs2khKPrNnzAzmTH5HbzR0fkkKro93Ab5vx9kfaGgT3lLA5EyWbRpoTdHbSreOppGJV/PwlRTksK+aZz5l6z+RLBgxaau5k2cJelTKzmRQMq0d51J8UxL+23d1TDTcj7WQllZu4YwxDo+eZc22X9mwd6gN65GIFmQzampxcMOoR1xeuMbpVoqromsXdG3+wmCiekNtfSSmiUNWu2zgap+WjlZW8X11TeNkpWwICvNfCm8u3Cmxg4PN0VdmEJw7/7+0/g32RaqCbhRecAAAAABJRU5ErkJggg=="/></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@latest/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@latest/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@latest/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.refrain.site/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.refrain.site/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo@latest/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.refrain.site/',
+        region: '',
+        pageSize: 5,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo@latest/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div id="my-aplayer" class="aplayer no-destroy" data-id="705468337" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-order="random" data-volume="0.55" data-theme="#80c8f8" data-preload="none"></div><script src="/js/hideLrc.js" async></script><script src="https://npm.elemecdn.com/butterfly-extsrc@latest/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://npm.elemecdn.com/aplayer@latest/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/aplayer@latest/dist/APlayer.min.js"></script><script src="https://npm.elemecdn.com/butterfly-extsrc@latest/metingjs/dist/Meting.min.js"></script><script src="https://npm.elemecdn.com/pjax@latest/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div class="docsearch-wrap"><div id="docsearch" style="display:none"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3.8.2"/><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.2"></script><script>(() => {
+  function getRelativePath(url) {
+    const { pathname, hash } = new URL(url, location.origin);
+    return pathname.replace(/index\.html$/, true ? "" : ".html") + hash;
+  }
+  docsearch(
+    Object.assign(
+      {
+        appId: "RKUHH8C2A1",
+        apiKey: "8bf4436c1bda6de9adf486bbbbe5daec",
+        indexName: "refrain",
+        container: "#docsearch",
+      },
+      {
+        placeholder: "搜索文档",
+        translations: {
+          button: { buttonText: "搜索", buttonAriaLabel: "搜索" },
+          modal: {
+            searchBox: {
+              resetButtonTitle: "清除查询条件",
+              resetButtonAriaLabel: "清除查询条件",
+              cancelButtonText: "取消",
+              cancelButtonAriaLabel: "取消",
+            },
+            startScreen: {
+              recentSearchesTitle: "搜索历史",
+              noRecentSearchesText: "没有搜索历史",
+              saveRecentSearchButtonTitle: "保存到搜索历史",
+              removeRecentSearchButtonTitle: "从搜索历史中移除",
+              favoriteSearchesTitle: "收藏",
+              removeFavoriteSearchButtonTitle: "从收藏中移除",
+            },
+            errorScreen: {
+              titleText: "无法获取结果",
+              helpText: "你可能需要检查你的网络连接",
+            },
+            footer: {
+              selectText: "选择",
+              selectKeyAriaLabel: "Enter key",
+              navigateText: "切换",
+              navigateUpKeyAriaLabel: "Arrow up",
+              navigateDownKeyAriaLabel: "Arrow down",
+              closeText: "关闭",
+              closeKeyAriaLabel: "Escape key",
+              searchByText: "搜索供应商",
+            },
+            noResultsScreen: {
+              noResultsText: "无法找到相关结果",
+              suggestedQueryText: "你可以尝试查询",
+              reportMissingResultsText: "你认为这个查询应该有结果？",
+              reportMissingResultsLinkText: "向我们反馈",
+            },
+          },
+        },
+        transformItems(items) {
+          return items.map((item) => {
+            return Object.assign({}, item, {
+              url: getRelativePath(item.url),
+            });
+          });
+        },
+        navigator: {
+          navigate({ itemUrl }) {
+            pjax.loadUrl(itemUrl);
+          },
+        },
+        hitComponent({ hit, children }) {
+          return {
+            __v: null,
+            type: "a",
+            ref: undefined,
+            constructor: undefined,
+            key: undefined,
+            props: {
+              href: hit.url,
+              children,
+              onClick: (e) => {
+                e.preventDefault();
+                pjax.loadUrl(hit.url);
+              },
+            },
+          };
+        },
+      }
+    )
+  );
+
+  const searchClickFn = () => {
+    document
+      .querySelector("#search-button > .search")
+      .addEventListener("click", () => {
+        document.querySelector(".DocSearch-Button").click();
+      });
+  };
+
+  searchClickFn();
+  window.addEventListener("pjax:complete", searchClickFn);
+})();</script></div></div><!-- hexo injector body_end start -->
+<script src="https://cdn.jsdelivr.net/gh/nova1751/hexo-shiki-plugin@latest/lib/codeblock.min.js"></script>
+
+  <script>
+  const CODE_CONFIG = {
+    beautify: true,
+    highlightCopy: true,
+    highlightLang: true,
+    highlightHeightLimit: 360,
+    isHighlightShrink: false,
+    copy: {
+      success: '复制成功',
+      error: '复制失败',
+      noSupport: '浏览器不支持',
+    }
+  };
+  console.log(
+    `%c hexo-shiki-plugin %c v1.0.25 %c https://github.com/nova1751/hexo-shiki-plugin`,
+    "color: #fff; background: #5f5f5f",
+    "color: #fff; background: #80c8f8",
+    ""
+  );
+  </script>
+  <script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock-nova1751@latest/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'ec43383f3cf34cf5980da257996d16db';
+  var gaud_map_key = '42b66694cf0de3cdd1627f1b09aa977d';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.982279,28.19409';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock-nova1751@latest/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><!-- hexo injector body_end end --></body></html>

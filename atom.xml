@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>希亚的西红柿のBlog</title>
+  <icon>https://npm.elemecdn.com/nova1751-sources/blogImg/icon.png</icon>
+  <subtitle>分享学习与生活</subtitle>
+  <link href="http://blog.refrain.site/atom.xml" rel="self"/>
+  
+  <link href="http://blog.refrain.site/"/>
+  <updated>2024-08-07T14:00:05.000Z</updated>
+  <id>http://blog.refrain.site/</id>
+  
+  <author>
+    <name>希亚的西红柿</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>虚拟列表</title>
+    <link href="http://blog.refrain.site/posts/300a8ca5/"/>
+    <id>http://blog.refrain.site/posts/300a8ca5/</id>
+    <published>2024-08-06T16:12:26.000Z</published>
+    <updated>2024-08-07T14:00:05.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;唔～，好久没有更新博文了，一年前的这个时候用 Vue 实现过一版虚拟列表，不过现在已经忘光光了，故写一篇博文帮忙回忆与巩固一下虚拟列表的知识。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="http://blog.refrain.site/categories/React/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="React" scheme="http://blog.refrain.site/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 算法笔记 Part3</title>
+    <link href="http://blog.refrain.site/posts/ffb66302/"/>
+    <id>http://blog.refrain.site/posts/ffb66302/</id>
+    <published>2024-03-03T04:29:06.000Z</published>
+    <updated>2024-03-05T17:09:15.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了博主的 Leetcode 算法刷题记录，方便以后查询复习。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;图论&quot;&gt;&lt;a href=&quot;#图论&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="LeetCode" scheme="http://blog.refrain.site/categories/LeetCode/"/>
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法" scheme="http://blog.refrain.site/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 算法笔记 Part2</title>
+    <link href="http://blog.refrain.site/posts/b672a0f6/"/>
+    <id>http://blog.refrain.site/posts/b672a0f6/</id>
+    <published>2024-02-26T04:29:06.000Z</published>
+    <updated>2024-04-15T16:17:32.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了博主的 Leetcode 算法刷题记录，方便以后查询复习。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;链表&quot;&gt;&lt;a href=&quot;#链表&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="LeetCode" scheme="http://blog.refrain.site/categories/LeetCode/"/>
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法" scheme="http://blog.refrain.site/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 算法笔记 Part1</title>
+    <link href="http://blog.refrain.site/posts/1be7bb2b/"/>
+    <id>http://blog.refrain.site/posts/1be7bb2b/</id>
+    <published>2024-02-25T04:29:06.000Z</published>
+    <updated>2024-03-29T16:59:12.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了博主的 Leetcode 算法刷题记录，方便以后查询复习。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;哈希表&quot;&gt;&lt;a href=&quot;#哈希表&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="LeetCode" scheme="http://blog.refrain.site/categories/LeetCode/"/>
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法" scheme="http://blog.refrain.site/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS手写题大汇总</title>
+    <link href="http://blog.refrain.site/posts/aac5e919/"/>
+    <id>http://blog.refrain.site/posts/aac5e919/</id>
+    <published>2024-01-02T15:34:30.000Z</published>
+    <updated>2024-05-30T02:19:03.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了关于前端面试常考的手写代码题，常看常复习。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;JS-基础篇&quot;&gt;&lt;a href=&quot;#JS-基础篇&quot; class=&quot;headerlink&quot; title=&quot;JS 基础篇&quot;&gt;&lt;/a&gt;JS</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/categories/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeSript笔记</title>
+    <link href="http://blog.refrain.site/posts/1afd9955/"/>
+    <id>http://blog.refrain.site/posts/1afd9955/</id>
+    <published>2024-01-01T09:12:26.000Z</published>
+    <updated>2024-01-01T09:48:40.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip info&quot;&gt;&lt;p&gt;之前 TS 笔记由于放在长文章后面阅读体验不太好，故单独抽离出来一篇文章。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了 TS 的学习知识与笔记。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="FrontEnd" scheme="http://blog.refrain.site/categories/FrontEnd/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="TypeScript" scheme="http://blog.refrain.site/tags/TypeScript/"/>
+    
+    <category term="FrontEnd" scheme="http://blog.refrain.site/tags/FrontEnd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Intersection Observer</title>
+    <link href="http://blog.refrain.site/posts/2afbd983/"/>
+    <id>http://blog.refrain.site/posts/2afbd983/</id>
+    <published>2023-12-31T10:31:39.000Z</published>
+    <updated>2023-12-31T14:10:53.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip info&quot;&gt;&lt;p&gt;早就想好好总结一下 Intersection Observer 这个 API，苦于一直没有时间，今天就来好好总结一下这个 API。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本篇文章将介绍现代</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/categories/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="WebAPI" scheme="http://blog.refrain.site/tags/WebAPI/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构与算法笔记</title>
+    <link href="http://blog.refrain.site/posts/acc0017d/"/>
+    <id>http://blog.refrain.site/posts/acc0017d/</id>
+    <published>2023-12-11T09:36:58.000Z</published>
+    <updated>2024-08-18T06:34:16.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本篇文章将介绍数据结构与算法的基本概念（前端版）。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;note info</summary>
+        
+      
+    
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="FrontEnd" scheme="http://blog.refrain.site/tags/FrontEnd/"/>
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法" scheme="http://blog.refrain.site/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React笔记</title>
+    <link href="http://blog.refrain.site/posts/a1605017/"/>
+    <id>http://blog.refrain.site/posts/a1605017/</id>
+    <published>2023-12-04T12:11:44.000Z</published>
+    <updated>2024-01-01T09:49:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h2&gt;&lt;h3 id=&quot;语法基础与规范&quot;&gt;&lt;a href=&quot;#语法基础与规范&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="http://blog.refrain.site/categories/React/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+    <category term="React" scheme="http://blog.refrain.site/tags/React/"/>
+    
+    <category term="Framework" scheme="http://blog.refrain.site/tags/Framework/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue3笔记</title>
+    <link href="http://blog.refrain.site/posts/3c94855e/"/>
+    <id>http://blog.refrain.site/posts/3c94855e/</id>
+    <published>2023-11-25T09:57:47.000Z</published>
+    <updated>2023-12-31T14:10:53.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了关于 Vue3 的相关笔记，主要记录 Vue3 及其生态的使用与技巧，不定时更新。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Vue" scheme="http://blog.refrain.site/categories/Vue/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+    <category term="Framework" scheme="http://blog.refrain.site/tags/Framework/"/>
+    
+    <category term="Vue" scheme="http://blog.refrain.site/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue2笔记</title>
+    <link href="http://blog.refrain.site/posts/adf5c49/"/>
+    <id>http://blog.refrain.site/posts/adf5c49/</id>
+    <published>2023-11-24T15:35:21.000Z</published>
+    <updated>2024-05-10T10:01:20.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了关于 Vue2 的相关笔记，主要记录 Vue2 的一些基础概念与知识，帮助理解 Vue3。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;Vue-的核心特性&quot;&gt;&lt;a href=&quot;#Vue-的核心特性&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Vue" scheme="http://blog.refrain.site/categories/Vue/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+    <category term="Framework" scheme="http://blog.refrain.site/tags/Framework/"/>
+    
+    <category term="Vue" scheme="http://blog.refrain.site/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端知识笔记</title>
+    <link href="http://blog.refrain.site/posts/fccf75e5/"/>
+    <id>http://blog.refrain.site/posts/fccf75e5/</id>
+    <published>2023-11-19T03:57:06.000Z</published>
+    <updated>2024-01-01T09:48:40.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了关于前端面试常考与常问的知识笔记，内容较多，不间断更新。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;CSS&quot;&gt;&lt;a href=&quot;#CSS&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Front End" scheme="http://blog.refrain.site/categories/Front-End/"/>
+    
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS拾遗笔记</title>
+    <link href="http://blog.refrain.site/posts/b2b6ba06/"/>
+    <id>http://blog.refrain.site/posts/b2b6ba06/</id>
+    <published>2023-10-23T04:17:34.000Z</published>
+    <updated>2023-11-24T06:43:50.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录了 JS 基础以及 ES6 的相关笔记，随缘更新。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;JS-基础&quot;&gt;&lt;a href=&quot;#JS-基础&quot; class=&quot;headerlink&quot; title=&quot;JS 基础&quot;&gt;&lt;/a&gt;JS</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/categories/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+    <category term="JS Basic" scheme="http://blog.refrain.site/tags/JS-Basic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS事件循环</title>
+    <link href="http://blog.refrain.site/posts/35a88b44/"/>
+    <id>http://blog.refrain.site/posts/35a88b44/</id>
+    <published>2023-10-20T06:07:28.000Z</published>
+    <updated>2023-11-21T13:24:05.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要介绍了 JS 中的事件循环概念，详细讲解了 Browser 中的事件循环以及 Node.js 中的事件循环。&lt;/p&gt;
+&lt;/div&gt;
+&lt;details class=&quot;folding-tag&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/categories/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+    <category term="JS Basic" scheme="http://blog.refrain.site/tags/JS-Basic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入了解Promise</title>
+    <link href="http://blog.refrain.site/posts/2275c8/"/>
+    <id>http://blog.refrain.site/posts/2275c8/</id>
+    <published>2023-10-16T04:17:32.000Z</published>
+    <updated>2023-12-24T07:30:08.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要讲解 Promise 的常用方法以及使用技巧，并实现如何手写一个 Promise。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;Promise-的出现&quot;&gt;&lt;a href=&quot;#Promise-的出现&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/categories/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+    <category term="JS Basic" scheme="http://blog.refrain.site/tags/JS-Basic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git 笔记</title>
+    <link href="http://blog.refrain.site/posts/582b690b/"/>
+    <id>http://blog.refrain.site/posts/582b690b/</id>
+    <published>2023-10-13T08:49:02.000Z</published>
+    <updated>2024-03-02T14:10:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文为个人自用 Git 笔记，记录了 Git 的常用命令，不定时更新(●’◡’●)。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;Git-常用命令&quot;&gt;&lt;a href=&quot;#Git-常用命令&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="百宝箱" scheme="http://blog.refrain.site/categories/%E7%99%BE%E5%AE%9D%E7%AE%B1/"/>
+    
+    
+    <category term="Git" scheme="http://blog.refrain.site/tags/Git/"/>
+    
+    <category term="GitHub" scheme="http://blog.refrain.site/tags/GitHub/"/>
+    
+    <category term="分布式管理系统" scheme="http://blog.refrain.site/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vite基础知识总结</title>
+    <link href="http://blog.refrain.site/posts/9614c7d1/"/>
+    <id>http://blog.refrain.site/posts/9614c7d1/</id>
+    <published>2023-10-08T12:48:33.000Z</published>
+    <updated>2024-01-01T09:48:40.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文介绍了 Vite 的一些常用功能笔记，方便后续记忆与复习。&lt;del&gt;总有种写这个不如直接看文档的感觉QAQ&lt;/del&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;Vite-工作基本原理&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/categories/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+    <category term="Vite" scheme="http://blog.refrain.site/tags/Vite/"/>
+    
+    <category term="Build Tool" scheme="http://blog.refrain.site/tags/Build-Tool/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>REGEX in JavaScript</title>
+    <link href="http://blog.refrain.site/posts/e89bd903/"/>
+    <id>http://blog.refrain.site/posts/e89bd903/</id>
+    <published>2023-10-04T11:19:37.000Z</published>
+    <updated>2023-11-21T09:36:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要介绍正则表达式的基本概念与用法，并对 JS 中的正则表达式的常用方法进行总结，方便后续记忆与复习。&lt;/p&gt;
+&lt;/div&gt;
+&lt;details class=&quot;folding-tag&quot; yellow&gt;&lt;summary&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/categories/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://blog.refrain.site/tags/JavaScript/"/>
+    
+    <category term="Front End" scheme="http://blog.refrain.site/tags/Front-End/"/>
+    
+    <category term="Regex" scheme="http://blog.refrain.site/tags/Regex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows/Ubuntu双系统安装教程</title>
+    <link href="http://blog.refrain.site/posts/d3748e5f/"/>
+    <id>http://blog.refrain.site/posts/d3748e5f/</id>
+    <published>2023-03-04T09:52:55.000Z</published>
+    <updated>2023-09-26T14:08:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本文主要记录笔者 PC 安装 Windows/Ubuntu 双系统的过程、Windows 平台下 VMware 虚拟机安装 Ubuntu 的配置过程、以及双系统 Ubuntu 卸载的注意事项。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div</summary>
+        
+      
+    
+    
+    
+    <category term="百宝箱" scheme="http://blog.refrain.site/categories/%E7%99%BE%E5%AE%9D%E7%AE%B1/"/>
+    
+    
+    <category term="Windows" scheme="http://blog.refrain.site/tags/Windows/"/>
+    
+    <category term="Ubuntu" scheme="http://blog.refrain.site/tags/Ubuntu/"/>
+    
+    <category term="虚拟机" scheme="http://blog.refrain.site/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA学习笔记</title>
+    <link href="http://blog.refrain.site/posts/8d55d49a/"/>
+    <id>http://blog.refrain.site/posts/8d55d49a/</id>
+    <published>2023-01-17T06:44:22.000Z</published>
+    <updated>2023-03-07T06:44:22.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;div class=&quot;tip home&quot;&gt;&lt;p&gt;本篇文章将作为编程语言 &lt;strong&gt;&lt;span class=&#39;p red&#39;&gt;JAVA&lt;/span&gt;&lt;/strong&gt; 的学习笔记，供以后查阅与复习使用。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tip</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="http://blog.refrain.site/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="http://blog.refrain.site/tags/Java/"/>
+    
+    <category term="编程学习" scheme="http://blog.refrain.site/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>栈与队列</title>
+    <link href="http://blog.refrain.site/posts/6534ce06/"/>
+    <id>http://blog.refrain.site/posts/6534ce06/</id>
+    <published>2022-12-31T06:18:56.000Z</published>
+    <updated>2023-01-09T06:18:56.000Z</updated>
+    
+    
+    <summary type="html">本人书写的数据结构教程</summary>
+    
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="栈" scheme="http://blog.refrain.site/tags/%E6%A0%88/"/>
+    
+    <category term="队列" scheme="http://blog.refrain.site/tags/%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性表</title>
+    <link href="http://blog.refrain.site/posts/40f24371/"/>
+    <id>http://blog.refrain.site/posts/40f24371/</id>
+    <published>2022-12-24T13:23:10.000Z</published>
+    <updated>2022-12-31T13:23:10.000Z</updated>
+    
+    
+    <summary type="html">本人书写的数据结构教程</summary>
+    
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="线性表" scheme="http://blog.refrain.site/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Win10/11任务栏透明美化</title>
+    <link href="http://blog.refrain.site/posts/b67f488/"/>
+    <id>http://blog.refrain.site/posts/b67f488/</id>
+    <published>2022-12-02T12:18:18.000Z</published>
+    <updated>2022-12-02T12:18:18.000Z</updated>
+    
+    
+    <summary type="html">win10/11任务栏美化教程</summary>
+    
+    
+    
+    <category term="百宝箱" scheme="http://blog.refrain.site/categories/%E7%99%BE%E5%AE%9D%E7%AE%B1/"/>
+    
+    
+    <category term="Windows" scheme="http://blog.refrain.site/tags/Windows/"/>
+    
+    <category term="任务栏" scheme="http://blog.refrain.site/tags/%E4%BB%BB%E5%8A%A1%E6%A0%8F/"/>
+    
+    <category term="美化" scheme="http://blog.refrain.site/tags/%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构绪论</title>
+    <link href="http://blog.refrain.site/posts/b06cc6ec/"/>
+    <id>http://blog.refrain.site/posts/b06cc6ec/</id>
+    <published>2022-09-27T08:42:26.000Z</published>
+    <updated>2022-12-12T08:42:26.000Z</updated>
+    
+    
+    <summary type="html">本人书写的数据结构教程</summary>
+    
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="数据结构" scheme="http://blog.refrain.site/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="绪论" scheme="http://blog.refrain.site/tags/%E7%BB%AA%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习基本概念与知识</title>
+    <link href="http://blog.refrain.site/posts/75378e04/"/>
+    <id>http://blog.refrain.site/posts/75378e04/</id>
+    <published>2022-08-20T02:42:24.000Z</published>
+    <updated>2022-08-20T02:42:24.000Z</updated>
+    
+    
+    <summary type="html">机器学习基础知识清单</summary>
+    
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用numpy实现k-means聚类算法</title>
+    <link href="http://blog.refrain.site/posts/170bc017/"/>
+    <id>http://blog.refrain.site/posts/170bc017/</id>
+    <published>2022-08-17T01:03:20.000Z</published>
+    <updated>2022-08-17T01:03:20.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;k-means-算法基础原理&quot;&gt;&lt;a href=&quot;#k-means-算法基础原理&quot; class=&quot;headerlink&quot; title=&quot;k-means 算法基础原理&quot;&gt;&lt;/a&gt;k-means 算法基础原理&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;本文注重对</summary>
+        
+      
+    
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Numpy" scheme="http://blog.refrain.site/tags/Numpy/"/>
+    
+    <category term="Python" scheme="http://blog.refrain.site/tags/Python/"/>
+    
+    <category term="k-means" scheme="http://blog.refrain.site/tags/k-means/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Numpy实现k-Nearest-Neighbor算法</title>
+    <link href="http://blog.refrain.site/posts/775eb342/"/>
+    <id>http://blog.refrain.site/posts/775eb342/</id>
+    <published>2022-08-14T06:08:58.000Z</published>
+    <updated>2022-08-14T06:08:58.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;KNN-算法基本原理&quot;&gt;&lt;a href=&quot;#KNN-算法基本原理&quot; class=&quot;headerlink&quot; title=&quot;KNN 算法基本原理&quot;&gt;&lt;/a&gt;KNN 算法基本原理&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;kNN 算法的核心思想是用距离最近的 k</summary>
+        
+      
+    
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="python" scheme="http://blog.refrain.site/tags/python/"/>
+    
+    <category term="Numpy" scheme="http://blog.refrain.site/tags/Numpy/"/>
+    
+    <category term="kNN算法" scheme="http://blog.refrain.site/tags/kNN%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python实现决策树(Decision Tree)算法</title>
+    <link href="http://blog.refrain.site/posts/54c08517/"/>
+    <id>http://blog.refrain.site/posts/54c08517/</id>
+    <published>2022-08-07T06:13:25.000Z</published>
+    <updated>2022-08-07T06:13:25.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;决策树算法基础原理分析&quot;&gt;&lt;a href=&quot;#决策树算法基础原理分析&quot; class=&quot;headerlink&quot; title=&quot;决策树算法基础原理分析&quot;&gt;&lt;/a&gt;决策树算法基础原理分析&lt;/h2&gt;&lt;h3 id=&quot;信息的不纯度-决定决策树分支的指标&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="python" scheme="http://blog.refrain.site/tags/python/"/>
+    
+    <category term="决策树" scheme="http://blog.refrain.site/tags/%E5%86%B3%E7%AD%96%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Numpy实现逻辑回归(Logistic Regression)算法</title>
+    <link href="http://blog.refrain.site/posts/355699d5/"/>
+    <id>http://blog.refrain.site/posts/355699d5/</id>
+    <published>2022-08-06T09:20:58.000Z</published>
+    <updated>2022-08-06T09:20:58.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;前言：本文旨在对如何使用 numpy 实现逻辑回归拟合的过程做具体分析，有关逻辑回归原理部分不做过多论述。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;数据集准备&quot;&gt;&lt;a href=&quot;#数据集准备&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="python" scheme="http://blog.refrain.site/tags/python/"/>
+    
+    <category term="Numpy" scheme="http://blog.refrain.site/tags/Numpy/"/>
+    
+    <category term="逻辑回归" scheme="http://blog.refrain.site/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性回归 (Linear Regression)</title>
+    <link href="http://blog.refrain.site/posts/20642/"/>
+    <id>http://blog.refrain.site/posts/20642/</id>
+    <published>2022-07-22T06:59:02.000Z</published>
+    <updated>2022-07-22T06:59:02.000Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;利用-Numpy-实现简单的机器学习算法&quot;&gt;&lt;a href=&quot;#利用-Numpy-实现简单的机器学习算法&quot; class=&quot;headerlink&quot; title=&quot;利用 Numpy 实现简单的机器学习算法&quot;&gt;&lt;/a&gt;利用 Numpy 实现简单的机器学习算法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;线性回归（Linear Regression） 可能是最流行的机器学习算法。线性回归就是要找一条直线，并且让这条直线尽可能地拟合散点图中的数据点。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="机器学习" scheme="http://blog.refrain.site/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="python" scheme="http://blog.refrain.site/tags/python/"/>
+    
+    <category term="Numpy" scheme="http://blog.refrain.site/tags/Numpy/"/>
+    
+    <category term="线性回归" scheme="http://blog.refrain.site/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于cloudflare对网站搭建的使用</title>
+    <link href="http://blog.refrain.site/posts/47341/"/>
+    <id>http://blog.refrain.site/posts/47341/</id>
+    <published>2022-07-18T10:54:13.000Z</published>
+    <updated>2022-07-18T10:54:13.000Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;为-hexo-博客添加自定义域名&quot;&gt;&lt;a href=&quot;#为-hexo-博客添加自定义域名&quot; class=&quot;headerlink&quot; title=&quot;为 hexo 博客添加自定义域名&quot;&gt;&lt;/a&gt;为 hexo 博客添加自定义域名&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;域名注册方面不做赘述，下面详细讲述利用 cloudflare 中 DNS 解析域名至 hexo 博客站的过程&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="DNS" scheme="http://blog.refrain.site/categories/DNS/"/>
+    
+    
+    <category term="cloudflare" scheme="http://blog.refrain.site/tags/cloudflare/"/>
+    
+    <category term="域名" scheme="http://blog.refrain.site/tags/%E5%9F%9F%E5%90%8D/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,1 @@
+async function e(e,t){t.throwIfAborted();let n=await fetch(`https://cdn.busuanzi.cc/api.php`,{method:`POST`,body:JSON.stringify({url:e,referrer:``}),credentials:`omit`,referrerPolicy:`no-referrer`,signal:t});return n.ok?await n.json():null}export{e as fetchCounts};

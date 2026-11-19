@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>希亚的西红柿のBlog</title>
+  <subtitle>分享学习与生活</subtitle>
+  <icon>https://blog.refrain.site/_astro/logo.9OiQvFpD_1z3GTE.png</icon>
+  <link href="https://blog.refrain.site/atom.xml" rel="self"/>
+  <link href="https://blog.refrain.site/"/>
+  <updated>2024-08-18T06:34:16.000Z</updated>
+  <id>http://blog.refrain.site/</id>
+  <author><name>希亚的西红柿</name></author>
+  <generator uri="https://astro.build/">Astro</generator>
+  <entry>
+    <title>虚拟列表</title>
+    <link href="https://blog.refrain.site/posts/300a8ca5/"/>
+    <id>http://blog.refrain.site/posts/300a8ca5/</id>
+    <published>2024-08-06T16:12:26.000Z</published>
+    <updated>2024-08-07T14:00:05.000Z</updated>
+    <summary type="text">唔～，好久没有更新博文了，一年前的这个时候用 Vue 实现过一版虚拟列表，不过现在已经忘光光了，故写一篇博文帮忙回忆与巩固一下虚拟列表的知识。 前言 本文对虚拟列表出现的原因与解决的问题不再介绍，着重讲解虚拟列表实现的思路以及原理。 技术栈 React Vite TS 预览链接 Demo 预览链接：react virtual list Github 仓库地址：react virtual list …</summary>
+    <category term="React" scheme="https://blog.refrain.site/categories/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="React" scheme="https://blog.refrain.site/tags/React/"/>
+  </entry>
+  <entry>
+    <title>LeetCode 算法笔记 Part3</title>
+    <link href="https://blog.refrain.site/posts/ffb66302/"/>
+    <id>http://blog.refrain.site/posts/ffb66302/</id>
+    <published>2024-03-03T04:29:06.000Z</published>
+    <updated>2024-03-05T17:09:15.000Z</updated>
+    <summary type="text">本文主要记录了博主的 Leetcode 算法刷题记录，方便以后查询复习。 图论 岛屿数量 LeetCode 原题链接：200. 岛屿数量 深度优先遍历，基本思路为，遇到一个岛就把这个岛给 沉没掉 ，然后统计数加 1。 腐烂的橘子 LeetCode 原题链接：994. 腐烂的橘子 广度优先遍历，利用循环比较好做，这边需要注意广度优先遍历的一些条件，辅助函数用于推入队列，上下左右扩散的过程还是由循环过…</summary>
+    <category term="LeetCode" scheme="https://blog.refrain.site/categories/"/>
+    <category term="算法" scheme="https://blog.refrain.site/tags/算法/"/>
+    <category term="数据结构" scheme="https://blog.refrain.site/tags/数据结构/"/>
+  </entry>
+  <entry>
+    <title>LeetCode 算法笔记 Part2</title>
+    <link href="https://blog.refrain.site/posts/b672a0f6/"/>
+    <id>http://blog.refrain.site/posts/b672a0f6/</id>
+    <published>2024-02-26T04:29:06.000Z</published>
+    <updated>2024-04-15T16:17:32.000Z</updated>
+    <summary type="text">本文主要记录了博主的 Leetcode 算法刷题记录，方便以后查询复习。 链表 相交链表 LeetCode 原题链接：160. 相交链表 哈希表存储遍历的节点，然后进行操作。第二种方法技巧性比较强，利用路径长度相同会回到相交的点的做法来求解。 反转链表 LeetCode 原题链接：206. 反转链表 循环和递归，递归比较难以理解，参考意义不是很大。 回文链表 LeetCode 原题链接：234. …</summary>
+    <category term="LeetCode" scheme="https://blog.refrain.site/categories/"/>
+    <category term="算法" scheme="https://blog.refrain.site/tags/算法/"/>
+    <category term="数据结构" scheme="https://blog.refrain.site/tags/数据结构/"/>
+  </entry>
+  <entry>
+    <title>LeetCode 算法笔记 Part1</title>
+    <link href="https://blog.refrain.site/posts/1be7bb2b/"/>
+    <id>http://blog.refrain.site/posts/1be7bb2b/</id>
+    <published>2024-02-25T04:29:06.000Z</published>
+    <updated>2024-03-29T16:59:12.000Z</updated>
+    <summary type="text">本文主要记录了博主的 Leetcode 算法刷题记录，方便以后查询复习。 哈希表 两数之和 LeetCode 原题链接：1. 两数之和 这道题首先考虑的是通过两层 for 循环遍历查询，但这样有很多无意义的查找。因此我们可以采用 哈希表 来减少查找的时间复杂度，此时查找顺序是 往后 而不是往前。注意使用 Map 对象来减少查询之前数据的时间复杂度，这里不能使用 WeakMap ，因为 WeakMa…</summary>
+    <category term="LeetCode" scheme="https://blog.refrain.site/categories/"/>
+    <category term="算法" scheme="https://blog.refrain.site/tags/算法/"/>
+    <category term="数据结构" scheme="https://blog.refrain.site/tags/数据结构/"/>
+  </entry>
+  <entry>
+    <title>JS手写题大汇总</title>
+    <link href="https://blog.refrain.site/posts/aac5e919/"/>
+    <id>http://blog.refrain.site/posts/aac5e919/</id>
+    <published>2024-01-02T15:34:30.000Z</published>
+    <updated>2024-05-30T02:19:03.000Z</updated>
+    <summary type="text">本文主要记录了关于前端面试常考的手写代码题，常看常复习。 JS 基础篇 深入了解 JS 这门语言的运行逻辑与机制，尝试实现其内部的方法。 ES5 实现继承 使用 ES5 的语法实现继承，有几个注意点： 使用 Object.create 方法，构造以父类的 prototype 为原型的新对象，防止对子类原型对象的修改影响到父类的原型对象。 注意静态方法的继承，使用 Object.setPrototy…</summary>
+    <category term="JavaScript" scheme="https://blog.refrain.site/categories/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+  </entry>
+  <entry>
+    <title>TypeSript笔记</title>
+    <link href="https://blog.refrain.site/posts/1afd9955/"/>
+    <id>http://blog.refrain.site/posts/1afd9955/</id>
+    <published>2024-01-01T09:12:26.000Z</published>
+    <updated>2024-01-01T09:48:40.000Z</updated>
+    <summary type="text">之前 TS 笔记由于放在长文章后面阅读体验不太好，故单独抽离出来一篇文章。 本文主要记录了 TS 的学习知识与笔记。 基本类型 TS 有以下几种数据类型： 基础类型 ：包括 boolean （布尔值）、 number （数字）、 string （字符串）、 null （空值）、 undefined （未定义值）、 bigint （大整型）和 symbol （符号）等。这些类型和 JavaScrip…</summary>
+    <category term="FrontEnd" scheme="https://blog.refrain.site/categories/"/>
+    <category term="TypeScript" scheme="https://blog.refrain.site/tags/TypeScript/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="FrontEnd" scheme="https://blog.refrain.site/tags/FrontEnd/"/>
+  </entry>
+  <entry>
+    <title>Intersection Observer</title>
+    <link href="https://blog.refrain.site/posts/2afbd983/"/>
+    <id>http://blog.refrain.site/posts/2afbd983/</id>
+    <published>2023-12-31T10:31:39.000Z</published>
+    <updated>2023-12-31T14:10:53.000Z</updated>
+    <summary type="text">早就想好好总结一下 Intersection Observer 这个 API，苦于一直没有时间，今天就来好好总结一下这个 API。 本篇文章将介绍现代 WebAPI Intersection Observer(元素交集观察器)。 背景 交叉观察器 API（Intersection Observer API）提供了一种 异步 检测目标元素与祖先元素或顶级文档的视口相交情况变化的方法。 过去，要检测一…</summary>
+    <category term="JavaScript" scheme="https://blog.refrain.site/categories/"/>
+    <category term="WebAPI" scheme="https://blog.refrain.site/tags/WebAPI/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+  </entry>
+  <entry>
+    <title>数据结构与算法笔记</title>
+    <link href="https://blog.refrain.site/posts/acc0017d/"/>
+    <id>http://blog.refrain.site/posts/acc0017d/</id>
+    <published>2023-12-11T09:36:58.000Z</published>
+    <updated>2024-08-18T06:34:16.000Z</updated>
+    <summary type="text">本篇文章将介绍数据结构与算法的基本概念（前端版）。 去年这个时间我在写数据结构与算法的博文，今年还在写，令人感叹。 基础 算法的基本概念 算法（ Algorithm ）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制 也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出 算法的五大特性： 有限性（ Finiteness ）：一个算法必…</summary>
+    <category term="数据结构" scheme="https://blog.refrain.site/categories/"/>
+    <category term="数据结构" scheme="https://blog.refrain.site/tags/数据结构/"/>
+    <category term="算法" scheme="https://blog.refrain.site/tags/算法/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="FrontEnd" scheme="https://blog.refrain.site/tags/FrontEnd/"/>
+  </entry>
+  <entry>
+    <title>React笔记</title>
+    <link href="https://blog.refrain.site/posts/a1605017/"/>
+    <id>http://blog.refrain.site/posts/a1605017/</id>
+    <published>2023-12-04T12:11:44.000Z</published>
+    <updated>2024-01-01T09:49:21.000Z</updated>
+    <summary type="text">基础 语法基础与规范 1. JSX 注意事项。 JSX 必须有一个根节点，如果没有，可以用幽灵节点 &lt; 代替。 所有标签必须闭合，成对闭合或者自闭和都可以。 JSX 采用小驼峰命名法，对于 class 要转化成 className ， for 需要转化成 htmlFor ，以防止 js 关键字冲突。 JSX 支持换行，如果需要换行需要加上 () ，防止 bug 出现。 注释在模板中的书写方式： {…</summary>
+    <category term="React" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="React" scheme="https://blog.refrain.site/tags/React/"/>
+    <category term="Framework" scheme="https://blog.refrain.site/tags/Framework/"/>
+  </entry>
+  <entry>
+    <title>Vue3笔记</title>
+    <link href="https://blog.refrain.site/posts/3c94855e/"/>
+    <id>http://blog.refrain.site/posts/3c94855e/</id>
+    <published>2023-11-25T09:57:47.000Z</published>
+    <updated>2023-12-31T14:10:53.000Z</updated>
+    <summary type="text">本文主要记录了关于 Vue3 的相关笔记，主要记录 Vue3 及其生态的使用与技巧，不定时更新。 基础 创建一个 app 实例并挂载 应用根组件的内容将会被渲染在容器元素里面。容器元素自己将不会被视为应用的一部分。 .mount() 方法应该始终在整个应用配置和资源注册完成后被调用。同时请注意，不同于其他资源注册方法，它的返回值是根组件实例而非应用实例。 这几个方法的返回值都是应用实例本身，也就是…</summary>
+    <category term="Vue" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="Vue" scheme="https://blog.refrain.site/tags/Vue/"/>
+    <category term="Framework" scheme="https://blog.refrain.site/tags/Framework/"/>
+  </entry>
+  <entry>
+    <title>Vue2笔记</title>
+    <link href="https://blog.refrain.site/posts/adf5c49/"/>
+    <id>http://blog.refrain.site/posts/adf5c49/</id>
+    <published>2023-11-24T15:35:21.000Z</published>
+    <updated>2024-05-10T10:01:20.000Z</updated>
+    <summary type="text">本文主要记录了关于 Vue2 的相关笔记，主要记录 Vue2 的一些基础概念与知识，帮助理解 Vue3。 Vue 的核心特性 数据驱动(MVVM) 数据驱动( MVVM )： MVVM 表示的是 Model View ViewModel MVVM 模型由以下三个部分组成： View ：表示当前页面所渲染的 DOM 结构，负责将数据模型转化为 UI 展现出来。 View 层通常是由 HTML 和 C…</summary>
+    <category term="Vue" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="Vue" scheme="https://blog.refrain.site/tags/Vue/"/>
+    <category term="Framework" scheme="https://blog.refrain.site/tags/Framework/"/>
+  </entry>
+  <entry>
+    <title>前端知识笔记</title>
+    <link href="https://blog.refrain.site/posts/fccf75e5/"/>
+    <id>http://blog.refrain.site/posts/fccf75e5/</id>
+    <published>2023-11-19T03:57:06.000Z</published>
+    <updated>2024-01-01T09:48:40.000Z</updated>
+    <summary type="text">本文主要记录了关于前端面试常考与常问的知识笔记，内容较多，不间断更新。 CSS 1. CSS 中盒模型有传统的 content box 与 border box ，二者区别在于前者的 width 与 height 设置的是 content box ，而后者设置的是 border box ，注意背景图之类的属性显示依然相同，默认的 background origin 属性就是 padding box…</summary>
+    <category term="Front End" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+  </entry>
+  <entry>
+    <title>JS拾遗笔记</title>
+    <link href="https://blog.refrain.site/posts/b2b6ba06/"/>
+    <id>http://blog.refrain.site/posts/b2b6ba06/</id>
+    <published>2023-10-23T04:17:34.000Z</published>
+    <updated>2023-11-24T06:43:50.000Z</updated>
+    <summary type="text">本文主要记录了 JS 基础以及 ES6 的相关笔记，随缘更新。 JS 基础 基本概念 1. JS 中 label 标签用来终止或者跳过外层循环 2. 在 ES5 之前，JS 有六种基本对象 number string boolean object undefined null typeof null 的结果是 object ，这是由于 JS 历史遗留问题造成的。 3. JS 中所有数字都是以 64…</summary>
+    <category term="JavaScript" scheme="https://blog.refrain.site/categories/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+    <category term="JS Basic" scheme="https://blog.refrain.site/tags/JS-Basic/"/>
+  </entry>
+  <entry>
+    <title>JS事件循环</title>
+    <link href="https://blog.refrain.site/posts/35a88b44/"/>
+    <id>http://blog.refrain.site/posts/35a88b44/</id>
+    <published>2023-10-20T06:07:28.000Z</published>
+    <updated>2023-11-21T13:24:05.000Z</updated>
+    <summary type="text">本文主要介绍了 JS 中的事件循环概念，详细讲解了 Browser 中的事件循环以及 Node.js 中的事件循环。 参考方向 教程原帖 : : : : 面试必问之 JS 事件循环(Event Loop)，看这一篇足够 面试必问之 JS 事件循环(Event Loop) Node.js 事件循环 Event Loop 通俗移动的 Node.js 事件循环 node.js 事件循环 前言 JS 是一…</summary>
+    <category term="JavaScript" scheme="https://blog.refrain.site/categories/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+    <category term="JS Basic" scheme="https://blog.refrain.site/tags/JS-Basic/"/>
+  </entry>
+  <entry>
+    <title>深入了解Promise</title>
+    <link href="https://blog.refrain.site/posts/2275c8/"/>
+    <id>http://blog.refrain.site/posts/2275c8/</id>
+    <published>2023-10-16T04:17:32.000Z</published>
+    <updated>2023-12-24T07:30:08.000Z</updated>
+    <summary type="text">本文主要讲解 Promise 的常用方法以及使用技巧，并实现如何手写一个 Promise。 Promise 的出现 回调地狱问题 在传统的 JS 编程中始终存在一个问题，即当当前回调函数的执行依赖于上一个回调函数的执行结果的时候，会形成回调函数层层嵌套的问题，严重影响代码的可读性与可维护性，这种现象一般称之为 回调地狱 。 下面为示例代码，回调地狱的一个比较常见的情景为 ajax 请求，即下一个请…</summary>
+    <category term="JavaScript" scheme="https://blog.refrain.site/categories/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+    <category term="JS Basic" scheme="https://blog.refrain.site/tags/JS-Basic/"/>
+  </entry>
+  <entry>
+    <title>Git 笔记</title>
+    <link href="https://blog.refrain.site/posts/582b690b/"/>
+    <id>http://blog.refrain.site/posts/582b690b/</id>
+    <published>2023-10-13T08:49:02.000Z</published>
+    <updated>2024-03-02T14:10:48.000Z</updated>
+    <summary type="text">本文为个人自用 Git 笔记，记录了 Git 的常用命令，不定时更新(●&apos;◡&apos;●)。 Git 常用命令 clone 基本格式为： git clone [url] [directory] ，其中 [directory] 表示需要创建目录的本地名称，省略则默认为版本库的名称。 有一些附加参数如下 l local ：只有当指定的版本库是一个本地路径才会生效，能跳过正常的传输机制，直接复制 .git 目录…</summary>
+    <category term="百宝箱" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Git" scheme="https://blog.refrain.site/tags/Git/"/>
+    <category term="GitHub" scheme="https://blog.refrain.site/tags/GitHub/"/>
+    <category term="分布式管理系统" scheme="https://blog.refrain.site/tags/分布式管理系统/"/>
+  </entry>
+  <entry>
+    <title>Vite基础知识总结</title>
+    <link href="https://blog.refrain.site/posts/9614c7d1/"/>
+    <id>http://blog.refrain.site/posts/9614c7d1/</id>
+    <published>2023-10-08T12:48:33.000Z</published>
+    <updated>2024-01-01T09:48:40.000Z</updated>
+    <summary type="text">本文介绍了 Vite 的一些常用功能笔记，方便后续记忆与复习。 总有种写这个不如直接看文档的感觉QAQ Vite 工作基本原理 1. 传统基于 js 的 bundler based 构建工具的慢启动以及热更新缓慢的问题。 原因： 开发服务器需要将所有模块全部打包后才能在浏览器中呈现。 原生 js 的性能问题。 总结： bundler based 在大型项目下性能低下的原因在于，其开发服务器原理必须…</summary>
+    <category term="JavaScript" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Vite" scheme="https://blog.refrain.site/tags/Vite/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+    <category term="Build Tool" scheme="https://blog.refrain.site/tags/Build-Tool/"/>
+  </entry>
+  <entry>
+    <title>REGEX in JavaScript</title>
+    <link href="https://blog.refrain.site/posts/e89bd903/"/>
+    <id>http://blog.refrain.site/posts/e89bd903/</id>
+    <published>2023-10-04T11:19:37.000Z</published>
+    <updated>2023-11-21T09:36:21.000Z</updated>
+    <summary type="text">本文主要介绍正则表达式的基本概念与用法，并对 JS 中的正则表达式的常用方法进行总结，方便后续记忆与复习。 参考方向 教程原帖 : : : : Learn regex the easy way Learn regex the easy way 菜鸟教程 正则表达式教程 Runoob 正则表达式教程 JS 中正则表达式 MDN RegExp 正则表达式基本概念 元字符 元字符 描述 : : . 句号…</summary>
+    <category term="JavaScript" scheme="https://blog.refrain.site/categories/"/>
+    <category term="JavaScript" scheme="https://blog.refrain.site/tags/JavaScript/"/>
+    <category term="Regex" scheme="https://blog.refrain.site/tags/Regex/"/>
+    <category term="Front End" scheme="https://blog.refrain.site/tags/Front-End/"/>
+  </entry>
+  <entry>
+    <title>Windows/Ubuntu双系统安装教程</title>
+    <link href="https://blog.refrain.site/posts/d3748e5f/"/>
+    <id>http://blog.refrain.site/posts/d3748e5f/</id>
+    <published>2023-03-04T09:52:55.000Z</published>
+    <updated>2023-09-26T14:08:00.000Z</updated>
+    <summary type="text">本文主要记录笔者 PC 安装 Windows/Ubuntu 双系统的过程、Windows 平台下 VMware 虚拟机安装 Ubuntu 的配置过程、以及双系统 Ubuntu 卸载的注意事项。 本文中 Ubuntu 安装环境：CPU：Intel i7 12700h,GPU：RTX 3060 laptop GPU,OS：Windows 11 Professional。 参考方向 教程原帖 : : :…</summary>
+    <category term="百宝箱" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Ubuntu" scheme="https://blog.refrain.site/tags/Ubuntu/"/>
+    <category term="Windows" scheme="https://blog.refrain.site/tags/Windows/"/>
+    <category term="虚拟机" scheme="https://blog.refrain.site/tags/虚拟机/"/>
+  </entry>
+  <entry>
+    <title>JAVA学习笔记</title>
+    <link href="https://blog.refrain.site/posts/8d55d49a/"/>
+    <id>http://blog.refrain.site/posts/8d55d49a/</id>
+    <published>2023-01-17T06:44:22.000Z</published>
+    <updated>2023-03-07T06:44:22.000Z</updated>
+    <summary type="text">本篇文章将作为编程语言 JAVA 的学习笔记，供以后查阅与复习使用。 此 JAVA 学习笔记参考自 菜鸟 JAVA 教程 。 本学习笔记以 查询和复习 为主要功能，文章内容应 短小精悍 。 Java 主要特性 关于 Java 特性的介绍的文字可能比较多 emm。。。主要因为我是照搬的 ，不过只需要简单了解，但需要特别注意的是 Java 与 C++的一个重要区别为 Java 不使用指针而是引用，这对…</summary>
+    <category term="Java" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Java" scheme="https://blog.refrain.site/tags/Java/"/>
+    <category term="编程学习" scheme="https://blog.refrain.site/tags/编程学习/"/>
+  </entry>
+  <entry>
+    <title>栈与队列</title>
+    <link href="https://blog.refrain.site/posts/6534ce06/"/>
+    <id>http://blog.refrain.site/posts/6534ce06/</id>
+    <published>2022-12-31T06:18:56.000Z</published>
+    <updated>2023-01-09T06:18:56.000Z</updated>
+    <summary type="text">本人书写的数据结构教程</summary>
+    <category term="数据结构" scheme="https://blog.refrain.site/categories/"/>
+    <category term="数据结构" scheme="https://blog.refrain.site/tags/数据结构/"/>
+    <category term="栈" scheme="https://blog.refrain.site/tags/栈/"/>
+    <category term="队列" scheme="https://blog.refrain.site/tags/队列/"/>
+  </entry>
+  <entry>
+    <title>线性表</title>
+    <link href="https://blog.refrain.site/posts/40f24371/"/>
+    <id>http://blog.refrain.site/posts/40f24371/</id>
+    <published>2022-12-24T13:23:10.000Z</published>
+    <updated>2022-12-31T13:23:10.000Z</updated>
+    <summary type="text">本人书写的数据结构教程</summary>
+    <category term="数据结构" scheme="https://blog.refrain.site/categories/"/>
+    <category term="数据结构" scheme="https://blog.refrain.site/tags/数据结构/"/>
+    <category term="线性表" scheme="https://blog.refrain.site/tags/线性表/"/>
+  </entry>
+  <entry>
+    <title>Win10/11任务栏透明美化</title>
+    <link href="https://blog.refrain.site/posts/b67f488/"/>
+    <id>http://blog.refrain.site/posts/b67f488/</id>
+    <published>2022-12-02T12:18:18.000Z</published>
+    <updated>2022-12-02T12:18:18.000Z</updated>
+    <summary type="text">win10/11任务栏美化教程</summary>
+    <category term="百宝箱" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Windows" scheme="https://blog.refrain.site/tags/Windows/"/>
+    <category term="任务栏" scheme="https://blog.refrain.site/tags/任务栏/"/>
+    <category term="美化" scheme="https://blog.refrain.site/tags/美化/"/>
+  </entry>
+  <entry>
+    <title>数据结构绪论</title>
+    <link href="https://blog.refrain.site/posts/b06cc6ec/"/>
+    <id>http://blog.refrain.site/posts/b06cc6ec/</id>
+    <published>2022-09-27T08:42:26.000Z</published>
+    <updated>2022-12-12T08:42:26.000Z</updated>
+    <summary type="text">本人书写的数据结构教程</summary>
+    <category term="数据结构" scheme="https://blog.refrain.site/categories/"/>
+    <category term="数据结构" scheme="https://blog.refrain.site/tags/数据结构/"/>
+    <category term="绪论" scheme="https://blog.refrain.site/tags/绪论/"/>
+  </entry>
+  <entry>
+    <title>机器学习基本概念与知识</title>
+    <link href="https://blog.refrain.site/posts/75378e04/"/>
+    <id>http://blog.refrain.site/posts/75378e04/</id>
+    <published>2022-08-20T02:42:24.000Z</published>
+    <updated>2022-08-20T02:42:24.000Z</updated>
+    <summary type="text">机器学习基础知识清单</summary>
+    <category term="机器学习" scheme="https://blog.refrain.site/categories/"/>
+    <category term="机器学习" scheme="https://blog.refrain.site/tags/机器学习/"/>
+  </entry>
+  <entry>
+    <title>使用numpy实现k-means聚类算法</title>
+    <link href="https://blog.refrain.site/posts/170bc017/"/>
+    <id>http://blog.refrain.site/posts/170bc017/</id>
+    <published>2022-08-17T01:03:20.000Z</published>
+    <updated>2022-08-17T01:03:20.000Z</updated>
+    <summary type="text">k means 算法基础原理 本文注重对 k means 算法的实现作出分析，基础原理不作赘述。 k means 算法的特点 1. k means 算法的基本概念： k 代表分为几个簇 means 表示寻求新质心点的时候采用求均值的方法 2. k means 算法的特点： k means 算法与 knn 算法类似，都是需要“聚类” k means 算法是无监督学习算法的一种 k means 算法的…</summary>
+    <category term="机器学习" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Numpy" scheme="https://blog.refrain.site/tags/Numpy/"/>
+    <category term="Python" scheme="https://blog.refrain.site/tags/Python/"/>
+    <category term="k-means" scheme="https://blog.refrain.site/tags/k-means/"/>
+  </entry>
+  <entry>
+    <title>使用Numpy实现k-Nearest-Neighbor算法</title>
+    <link href="https://blog.refrain.site/posts/775eb342/"/>
+    <id>http://blog.refrain.site/posts/775eb342/</id>
+    <published>2022-08-14T06:08:58.000Z</published>
+    <updated>2022-08-14T06:08:58.000Z</updated>
+    <summary type="text">KNN 算法基本原理 kNN 算法的核心思想是用距离最近的 k 个样本数据的分类来代表目标数据的分类。 用俗话来说就是 “近朱者赤，近墨者黑” ，采用距离最近的 k 个样本中占比最高的类别来代表测试数据的类别。 注意 KNN 算法仍然是有监督学习算法的一种 KNN 算法的特点 优点： 1. 监督学习：可以看到，kNN 算法首先需要一个 训练样本集 ，这个集合中含有 分类信息 ，因此它属于 监督学习…</summary>
+    <category term="机器学习" scheme="https://blog.refrain.site/categories/"/>
+    <category term="python" scheme="https://blog.refrain.site/tags/Python/"/>
+    <category term="机器学习" scheme="https://blog.refrain.site/tags/机器学习/"/>
+    <category term="kNN算法" scheme="https://blog.refrain.site/tags/kNN算法/"/>
+    <category term="Numpy" scheme="https://blog.refrain.site/tags/Numpy/"/>
+  </entry>
+  <entry>
+    <title>Python实现决策树(Decision Tree)算法</title>
+    <link href="https://blog.refrain.site/posts/54c08517/"/>
+    <id>http://blog.refrain.site/posts/54c08517/</id>
+    <published>2022-08-07T06:13:25.000Z</published>
+    <updated>2022-08-07T06:13:25.000Z</updated>
+    <summary type="text">决策树算法基础原理分析 信息的不纯度(决定决策树分支的指标) 不纯度 是在决策树中 衡量特征分裂优异性 的最主要的指标，用于衡量样本在根据某一特征的分类标准分裂后，样本是否被正确分类的准确程度。 主要有 3 种计算方式，分别对应了 3 类决策树： 决策树类别 不纯度计算方式 : : : : ID3 信息增益（Information Gain） C4.5 信息增益率（Information Gain…</summary>
+    <category term="机器学习" scheme="https://blog.refrain.site/categories/"/>
+    <category term="python" scheme="https://blog.refrain.site/tags/Python/"/>
+    <category term="机器学习" scheme="https://blog.refrain.site/tags/机器学习/"/>
+    <category term="决策树" scheme="https://blog.refrain.site/tags/决策树/"/>
+  </entry>
+  <entry>
+    <title>Numpy实现逻辑回归(Logistic Regression)算法</title>
+    <link href="https://blog.refrain.site/posts/355699d5/"/>
+    <id>http://blog.refrain.site/posts/355699d5/</id>
+    <published>2022-08-06T09:20:58.000Z</published>
+    <updated>2022-08-06T09:20:58.000Z</updated>
+    <summary type="text">前言：本文旨在对如何使用 numpy 实现逻辑回归拟合的过程做具体分析，有关逻辑回归原理部分不做过多论述。 数据集准备 准备用于二分类的数据集,可直接复制到对应的 txt 文件 0.017612 14.053064 0 1.395634 4.662541 1 0.752157 6.538620 0 1.322371 7.152853 0 0.423363 11.054677 0 0.406704 …</summary>
+    <category term="机器学习" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Numpy" scheme="https://blog.refrain.site/tags/Numpy/"/>
+    <category term="机器学习" scheme="https://blog.refrain.site/tags/机器学习/"/>
+    <category term="python" scheme="https://blog.refrain.site/tags/Python/"/>
+    <category term="逻辑回归" scheme="https://blog.refrain.site/tags/逻辑回归/"/>
+  </entry>
+  <entry>
+    <title>线性回归 (Linear Regression)</title>
+    <link href="https://blog.refrain.site/posts/20642/"/>
+    <id>http://blog.refrain.site/posts/20642/</id>
+    <published>2022-07-22T06:59:02.000Z</published>
+    <updated>2022-07-22T06:59:02.000Z</updated>
+    <summary type="text">利用 Numpy 实现简单的机器学习算法 线性回归（Linear Regression） 可能是最流行的机器学习算法。线性回归就是要找一条直线，并且让这条直线尽可能地拟合散点图中的数据点。 前言 线性回归作为高中数学统计题比较重要的内容，先对其原理与推导过程不做详细讨论，重点通过代码来运用 python 模块实现线性回归算法。 线性回归算法的简单介绍 线性模型：给定由 d 个属性描述的示例，线性模…</summary>
+    <category term="机器学习" scheme="https://blog.refrain.site/categories/"/>
+    <category term="Numpy" scheme="https://blog.refrain.site/tags/Numpy/"/>
+    <category term="机器学习" scheme="https://blog.refrain.site/tags/机器学习/"/>
+    <category term="python" scheme="https://blog.refrain.site/tags/Python/"/>
+    <category term="线性回归" scheme="https://blog.refrain.site/tags/线性回归/"/>
+  </entry>
+  <entry>
+    <title>关于cloudflare对网站搭建的使用</title>
+    <link href="https://blog.refrain.site/posts/47341/"/>
+    <id>http://blog.refrain.site/posts/47341/</id>
+    <published>2022-07-18T10:54:13.000Z</published>
+    <updated>2022-07-18T10:54:13.000Z</updated>
+    <summary type="text">为 hexo 博客添加自定义域名 域名注册方面不做赘述，下面详细讲述利用 cloudflare 中 DNS 解析域名至 hexo 博客站的过程 cloudflare 中域名的解析 1. 注册 cloudflare 账号 ( 过程比较简单就不放图了 ，推荐使用 gmail 或者 outlook 邮箱) 2. cloudflare 中添加站点 注意此处添加的站点为你所购买的域名 添加站点 注意你需要在…</summary>
+    <category term="DNS" scheme="https://blog.refrain.site/categories/"/>
+    <category term="cloudflare" scheme="https://blog.refrain.site/tags/cloudflare/"/>
+    <category term="域名" scheme="https://blog.refrain.site/tags/域名/"/>
+  </entry>
+</feed>
